@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Brainy Badgers</title>
   </head>
@@ -14,30 +14,23 @@
       <nav class="cyan">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center"><i id="header-icon" class="material-icons">local_dining</i> Brainy Recipes</a>
-          <!--<ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
-          </ul>-->
         </div>
       </nav>
     </header>
     <main>
       <div class="row">
-        <div id="search-area" class="col s12 center">
+        <div id="search-area" class="col s12 m3 center grey">
           <div class="container">
-            <h2 class="flow-text">Search Form</h2>
-            <form action="#">
-              <div class="input-field col s6 pull-3">
-                <input id="input_text" type="text" data-length="10">
-                <label for="input_text">Search Recipe</label>
-                <div class="btn cyan">Search</div>
-              </div>
-            </form>
+            <h2 class="flow-text">Search Section</h2>
           </div>
         </div>
-        <div id="popular-area" class="col s12 center section">
-          <h2 class="flow-text">Popular Recipes</h2>
+        <div id="content-area" class="col s12 m9 center section">
+          <div class="row section" id="content-section">
+            <h2>Recipe Area</h2>
+          </div>
+          <div class="row section cyan lighten-5" id="popular-recipes">
+            <h2 class="">Popular Recipes</h2>
+          </div>
         </div>      
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
