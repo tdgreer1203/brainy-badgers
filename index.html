@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="cyan">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center"><i id="header-icon" class="material-icons">local_dining</i> Brainy Recipes</a>
           <!--<ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -23,13 +23,22 @@
       </nav>
     </header>
     <main>
-      <div id="search-area" class="col s12 m4 l3 center"> <!-- Note that "m4 l3" was added -->
-          <h2>Search Form</h2>
-      </div>
-      <div id="popular-area" class="col s12 m8 l9 center"> <!-- Note that "m8 l9" was added -->
-        <h2>Popular Recipes</h2>
-
-      </div>
+      <div class="row">
+        <div id="search-area" class="col s12 center">
+          <div class="container">
+            <h2 class="flow-text">Search Form</h2>
+            <form action="#">
+              <div class="input-field col s6 pull-3">
+                <input id="input_text" type="text" data-length="10">
+                <label for="input_text">Search Recipe</label>
+                <div class="btn cyan">Search</div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="popular-area" class="col s12 center section">
+          <h2 class="flow-text">Popular Recipes</h2>
+        </div>      
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
