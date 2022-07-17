@@ -1,0 +1,29 @@
+#header-icon {
+    font-size: 40px;
+}
+
+#search-area {
+    height: 100vh;
+}
+
+#content-section {
+    height: 65vh;
+}
+
+#popular-recipes {
+    height: 25vh;
+}
+
+@media only screen and (max-width: 600px) {
+    #search-area {
+        height: auto;
+    }
+
+    #content-section {
+        height: auto;
+    }
+    
+    #popular-recipes {
+        height: auto;
+    }
+  }
