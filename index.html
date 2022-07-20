@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Brainy Badgers</title>
+    <title>Brainy Recipes</title>
   </head>
   <body>
     <header>
@@ -22,10 +22,11 @@
         <div id="search-area" class="col s12 center grey lighten-4">
           <div class="container">
             <div class="row">
-              <input type="text" placeholder="Search" class="col s12 m6 offset-m3">
+              <input type="text" id="search" placeholder="Search" class="col s12 m6 offset-m3">
             </div>
             <div class="row">
-              <button id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipes</button>
+              <!-- adding click function to button whihc will later be uses to display recipe -->
+              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipes</button>
               <button id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4">Cocktail</button>
             </div>
           </div>
@@ -59,10 +60,12 @@
           <div id="content-area" class="col s12 m9 center section">
           <div class="row section" id="content-section">
             <h2>Recipe Area</h2>
+            <div id="recipeCall"></div>
+            <a href="" id ="recipeLink" target="_blank" style="color: red"></a>
           </div>
-          <div class="row section cyan lighten-5" id="popular-recipes">
-            <h2>Popular Recipes</h2>
-          </div>
+          <!-- <div class="row section cyan lighten-5" id="popular-recipes">
+            <h2>Popular Recipes</h2> 
+          </div> -->
         </div> 
 <!-- 
               This content will be:
@@ -76,6 +79,7 @@
              
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

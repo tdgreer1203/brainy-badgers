@@ -54,6 +54,10 @@
 
 }
 
+#recipeCall h3 {
+    font-size: 25px;
+}
+
 @media only screen and (max-width: 600px) {
     #search-area {
         height: auto;
