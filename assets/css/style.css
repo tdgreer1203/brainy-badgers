@@ -3,7 +3,7 @@
 }
 
 #search-area {
-    padding: 30px 0;
+    padding-top: 30px;
     border-bottom: 3px solid black;
 }
 
@@ -34,6 +34,24 @@
 
 #cocktailBtn {
     margin-left: 15px;
+}
+
+#sideBar {
+    height: 100vh;
+}
+
+#list {
+    height: 80vh;
+    border: 5px solid teal;
+    margin-bottom: 20px;
+}
+
+#saveBtn {
+    align-content: center;
+}
+
+.buttonCenter {
+
 }
 
 @media only screen and (max-width: 600px) {

@@ -21,24 +21,59 @@
       <div class="row">
         <div id="search-area" class="col s12 center grey lighten-4">
           <div class="container">
-            <input type="text" placeholder="Search" class="m6">
-            <div id="randomBtns" class="center-align">
-            <button id="recipeBtn" class="waves-effect waves-light btn col s5">Recipes</button>
-            <button id="cocktailBtn" class="waves-effect waves-light btn col s5">Cocktail</button>
+            <div class="row">
+              <input type="text" placeholder="Search" class="col s12 m6 offset-m3">
+            </div>
+            <div class="row">
+              <button id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipes</button>
+              <button id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4">Cocktail</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        
-        <div id="content-area" class="col s12 m9 center section">
+      <!-- Navbar goes here -->
+
+    <!-- Page Layout here -->
+    <div class="row">
+
+      <div id="sideBar" class="col s3 m4 l3 cyan">
+        <h3 class="center flow-text">Grocery List</h3> <!-- Note that "m4 l3" was added -->
+        <!-- Grey navigation panel
+
+              This content will be:
+          3-columns-wide on large screens,
+          4-columns-wide on medium screens,
+          12-columns-wide on small screens  -->
+          <div id="list">
+
+          </div>
+          <div class="btnCenter row">
+            <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col offset-m4">Save List</button>
+          </div>
+          
+      </div>
+
+      <div class="col s9 m8 l9 teal">
+         <!-- Note that "m8 l9" was added -->
+        <!-- Teal page content -->
+          <div id="content-area" class="col s12 m9 center section">
           <div class="row section" id="content-section">
             <h2>Recipe Area</h2>
           </div>
           <div class="row section cyan lighten-5" id="popular-recipes">
-            <h2 class="">Popular Recipes</h2>
+            <h2>Popular Recipes</h2>
           </div>
-        </div>      
+        </div> 
+<!-- 
+              This content will be:
+          9-columns-wide on large screens,
+          8-columns-wide on medium screens,
+          12-columns-wide on small screens  -->
+
+      </div>
+
+    </div>  
+             
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
