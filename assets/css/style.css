@@ -3,7 +3,8 @@
 }
 
 #search-area {
-    height: 100vh;
+    padding: 30px 0;
+    border-bottom: 3px solid black;
 }
 
 #content-section {
@@ -12,6 +13,27 @@
 
 #popular-recipes {
     height: 25vh;
+}
+
+::placeholder {
+    color: black;
+    text-align: center;
+    font-size: 14px;
+}
+
+#randomBtns {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#recipeBtn {
+    margin-right: 15px;
+   
+}
+
+#cocktailBtn {
+    margin-left: 15px;
 }
 
 @media only screen and (max-width: 600px) {
