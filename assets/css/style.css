@@ -11,10 +11,6 @@
     height: 65vh;
 }
 
-#popular-recipes {
-    height: 25vh;
-}
-
 ::placeholder {
     color: black;
     text-align: center;
@@ -30,7 +26,14 @@
 #recipeBtn {
     margin-right: 15px;
     margin-bottom: 50px;
-   
+}
+
+#recipe-image {
+    max-height: 50vh;
+}
+
+.section-title {
+    text-decoration: underline;
 }
 
 #cocktailBtn {
@@ -38,6 +41,12 @@
 }
 
 #sideBar {
+    height: 70vh;
+    border-left: 3px solid black;
+}
+
+#list {
+    margin: 20px 0;
     height: 65vh;
 }
 
@@ -67,9 +76,14 @@
     #content-section {
         height: auto;
     }
-    
-    #popular-recipes {
-        height: auto;
+
+    #recipeBtn {
+        margin-bottom: 10px;
+    }
+
+    #cocktailBtn {
+        margin-left: 0;
+        margin-bottom: 10px;
     }
 
     #recipeBtn {

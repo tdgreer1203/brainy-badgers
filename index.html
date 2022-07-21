@@ -25,50 +25,67 @@
               <input type="text" placeholder="Search" class="col s12 m6 offset-m3">
             </div>
             <div class="row">
-              <button id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipes</button>
+              <button id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipe</button>
               <button id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4">Cocktail</button>
             </div>
           </div>
         </div>
       </div>
-      <!-- Navbar goes here -->
-
-    <!-- Page Layout here -->
-    <div class="row">
-
-      <div id="ingredients" class="col s12 m8 l9 grey lighten-1">
-         <!-- Note that "m8 l9" was added -->
-        <!-- Teal page content -->
-          <div id="content-area" class="col s12 m9 center section">
-          <div class="row section" id="content-section">
-            <h2>Recipe</h2>
-            <img id="recipe-image"></img>
-            <p>Cook times</p>
+      <div class="row">
+        <div id=content-area: class="col m12 l9">
+            <div class="row">
+              <h3 id="recipe-title" class="center s12">Recipe Title</h3>
+            </div>
+            <div class="row">
+              <div class="col s12 m12 l3 center"><img id="recipe-image" class="responsive-img" src="https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg"></div>
+              <div class="col s12 m12 l6">
+                <h4 class="flow-text center section-title">Instructions</h4>
+                <ol>
+                  <li>Do this first.</li>
+                  <li>Do this first.</li>
+                  <li>Do this first.</li>
+                  <li>Do this first.</li>
+                  <li>Do this first.</li>
+                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                </ol>
+              </div>
+              <div class="col s12 m12 l3">
+                <h4 class="flow-text center section-title">Ingredients</h4>
+                <ul id="ingredient-list" class="center">
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                  <li>Item 1 - quantity</li>
+                </ul>
+              </div>
+            </div> 
           </div>
-          <div>
-            Ingredients
-          </div>
-        </div> 
-
-      </div>
-
-      <div id="sideBar" class="col s12 m4 l3 cyan">
-        <h3 class="center flow-text">Grocery List</h3> <!-- Note that "m4 l3" was added -->
-
-          <div id="list">
-
+          <div id="sideBar" class="col s12 m12 l3 cyan lighten-3">
+            <h3 class="center flow-text">Grocery List</h3>
+            <div class="divider"></div>
+          <div id="list" class="center">
+            <ul id="grocery-list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+            </ul>
           </div>
           <div class="btnCenter row">
             <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col s12">Save List</button>
-          </div>
-          
+          </div>          
+        </div>
       </div>
-
-    </div>  
-    <footer class="row section cyan lighten-5 center">
-      <h2>Placeholder</h2>
-    </footer>  
-    </main>
+    </div>
+  </div>  
+  <footer class="row section black center">
+    <h4 class="flow-text white-text">Brainy Badgers - &copy; 2022. All Rights Reserved</h4>
+  </footer>  
+</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
