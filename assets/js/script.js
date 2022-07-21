@@ -30,6 +30,12 @@ function generateRecipe(query){
             var getRecipeId = res.results[randomIndex].id;
             console.log(getRecipeId);
 
+            //for loop to display ingredients into DOM-----DJ
+            //We are going to need to create either "li/ul/ol" elements or display elements in an image
+            for (var i = 0; ingredientNameArray.length; i++) {
+                var ingredientText = ingredientNameArray[i];
+            }
+
             // calling the ingredients to the DOM
             // i think the loop should go here, currently I have it set to call the first name in the array, but would want to 
             // loop the entire array to display all ingredient. Created array updtop called ingredientNameArray
