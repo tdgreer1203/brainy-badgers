@@ -31,6 +31,8 @@ function generateRecipe(query){
             console.log(getRecipeId);
 
             // calling the ingredients to the DOM
+            // i think the loop should go here, currently I have it set to call the first name in the array, but would want to 
+            // loop the entire array to display all ingredient. Created array updtop called ingredientNameArray
             $.ajax({
                 url:"https://api.spoonacular.com/recipes/" + getRecipeId + "/ingredientWidget.json?apiKey=d5f1707aa8a94f70a3fce40a554aebc6",
                 success: function(res){
