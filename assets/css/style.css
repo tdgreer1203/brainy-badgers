@@ -29,6 +29,7 @@
 
 #recipeBtn {
     margin-right: 15px;
+    margin-bottom: 50px;
    
 }
 
@@ -37,11 +38,11 @@
 }
 
 #sideBar {
-    height: 100vh;
+    height: 65vh;
 }
 
 #list {
-    height: 80vh;
+    height: 50vh;
     border: 5px solid teal;
     margin-bottom: 20px;
 }
@@ -52,6 +53,10 @@
 
 .buttonCenter {
 
+}
+
+.row {
+    margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -65,5 +70,14 @@
     
     #popular-recipes {
         height: auto;
+    }
+
+    #recipeBtn {
+        margin-bottom: 10px;
+    }
+
+    #cocktailBtn {
+        margin-left: 0;
+        margin-bottom: 10px;
     }
   }
