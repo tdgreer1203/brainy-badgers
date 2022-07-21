@@ -28,6 +28,10 @@
     margin-bottom: 50px;
 }
 
+#add-to-list-btn {
+    margin: 10px 0 70px 0;
+}
+
 #recipe-image {
     max-height: 50vh;
 }
@@ -92,5 +96,13 @@
 
     #instructions-area {
         border-bottom: 3px solid black;
+    }
+
+    #add-to-list-btn {
+        margin: 10px 0 60px 0;
+    }
+
+    #back-btn {
+        margin-bottom: 25px;
     }
   }
