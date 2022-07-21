@@ -52,7 +52,6 @@
 
 #list {
     height: 50vh;
-    border: 5px solid teal;
     margin-bottom: 20px;
 }
 
@@ -60,15 +59,11 @@
     align-content: center;
 }
 
-#ingredients{
-    height: 65vh;
-}
-
 .row {
     margin: 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     #search-area {
         height: auto;
     }
@@ -86,12 +81,11 @@
         margin-bottom: 10px;
     }
 
-    #recipeBtn {
-        margin-bottom: 10px;
+    #sideBar {
+        height: auto;
     }
 
-    #cocktailBtn {
-        margin-left: 0;
-        margin-bottom: 10px;
+    #list {
+        height: auto;
     }
   }
