@@ -63,7 +63,7 @@
     margin: 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     #search-area {
         height: auto;
     }
@@ -83,9 +83,14 @@
 
     #sideBar {
         height: auto;
+        border: none;
     }
 
     #list {
         height: auto;
+    }
+
+    #instructions-area {
+        border-bottom: 3px solid black;
     }
   }
