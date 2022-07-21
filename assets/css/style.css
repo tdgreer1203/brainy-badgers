@@ -11,10 +11,6 @@
     height: 65vh;
 }
 
-#popular-recipes {
-    height: 25vh;
-}
-
 ::placeholder {
     color: black;
     text-align: center;
@@ -29,11 +25,36 @@
 
 #recipeBtn {
     margin-right: 15px;
-   
+    margin-bottom: 50px;
+}
+
+#recipe-image {
+    max-height: 50vh;
+}
+
+.section-title {
+    text-decoration: underline;
 }
 
 #cocktailBtn {
     margin-left: 15px;
+}
+
+#sideBar {
+    height: 70vh;
+    border-left: 3px solid black;
+}
+
+#list {
+    margin: 20px 0;
+}
+
+#saveBtn {
+    align-content: center;
+}
+
+.row {
+    margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -44,8 +65,13 @@
     #content-section {
         height: auto;
     }
-    
-    #popular-recipes {
-        height: auto;
+
+    #recipeBtn {
+        margin-bottom: 10px;
+    }
+
+    #cocktailBtn {
+        margin-left: 0;
+        margin-bottom: 10px;
     }
   }
