@@ -79,6 +79,11 @@
 }
 
 @media only screen and (max-width: 992px) {
+    .row {
+        margin: 0;
+        display: block;
+    }
+
     #search-area {
         height: auto;
     }
