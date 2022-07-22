@@ -1,3 +1,12 @@
+var recipeTitleEl = document.getElementById('recipe-title');
+var recipeImageEl = document.getElementById('recipe-image');
+var ingredientListEl = document.getElementById('ingredient-list')
+//
+
+
+
+var recipeId;
+
 
 // Array so that the recipe button generates a random recipe from the array
 var recipeArray = [];
@@ -20,32 +29,19 @@ function generateRecipe(query){
         url:"https://api.spoonacular.com/recipes/search?apiKey=d5f1707aa8a94f70a3fce40a554aebc6&number=30&query="+ query,
         success: function(res){
             var randomIndex = getRandomInt();
-            recipeArray = res.results
-            document.getElementById("recipeCall").innerHTML = "<h3>" + res.results[randomIndex].title + "</h3><br><img src='" + res.baseUri + res.results[randomIndex].image + "'width='300'/>";
-            
-            // setting href attribute to recipeLink id so that it will take yser to recipe website
-            document.getElementById("recipeLink").setAttribute("href", res.results[randomIndex].sourceUrl); 
-            
-            // this variable will be used in the following call to link ingredients to the random recipe that was generated 
-            var getRecipeId = res.results[randomIndex].id;
-            console.log(getRecipeId);
+            recipeTitleEl.innerHTML = res.results[randomIndex].title;
+            recipeImageEl.setAttribute('src',res.baseUri + res.results[randomIndex].image);
+            recipeId = res.results[randomIndex].id 
 
-            //for loop to display ingredients into DOM-----DJ
-            //We are going to need to create either "li/ul/ol" elements or display elements in an image
-            for (var i = 0; ingredientNameArray.length; i++) {
-                var ingredientText = ingredientNameArray[i];
-            }
-
-            // calling the ingredients to the DOM
-            // i think the loop should go here, currently I have it set to call the first name in the array, but would want to 
-            // loop the entire array to display all ingredient. Created array updtop called ingredientNameArray
             $.ajax({
-                url:"https://api.spoonacular.com/recipes/" + getRecipeId + "/ingredientWidget.json?apiKey=d5f1707aa8a94f70a3fce40a554aebc6",
+                url:"https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget.json?apiKey=d5f1707aa8a94f70a3fce40a554aebc6",
                 success: function(res){
-                    document.getElementById("ingredientsCall").innerHTML = "<h3>Ingredients:</h3><br>" + res.ingredients[0].name;
+                    ingredientListEl.innerHTML = ''
+                    for (var i = 0; res.ingredients.length; i++) {
+                        ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].name + "</li>"
+                    }
                 }
-            });
-
+             });
         }  
-    });
+    })            
 }
