@@ -1,6 +1,7 @@
-var recipeTitleEl = document.getElementById('recipe-title');
-var recipeImageEl = document.getElementById('recipe-image');
+var titleEl = document.getElementById('title');
+var imageEl = document.getElementById('image');
 var ingredientListEl = document.getElementById('ingredient-list')
+
 //
 
 
@@ -29,8 +30,8 @@ function generateRecipe(query){
         url:"https://api.spoonacular.com/recipes/search?apiKey=d5f1707aa8a94f70a3fce40a554aebc6&number=30&query="+ query,
         success: function(res){
             var randomIndex = getRandomInt();
-            recipeTitleEl.innerHTML = res.results[randomIndex].title;
-            recipeImageEl.setAttribute('src',res.baseUri + res.results[randomIndex].image);
+            titleEl.innerHTML = res.results[randomIndex].title;
+            imageEl.setAttribute('src',res.baseUri + res.results[randomIndex].image);
             recipeId = res.results[randomIndex].id 
 
             $.ajax({
@@ -45,3 +46,4 @@ function generateRecipe(query){
         }  
     })            
 }
+

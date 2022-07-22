@@ -26,8 +26,8 @@
             </div>
             <div class="row">
               <!-- adding click function to button whihc will later be uses to display recipe -->
-              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipes</button>
-              <button id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4">Cocktail</button>
+              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipe</button>
+              <button onclick="generateCocktail(document.getElementById('search').value.trim())" id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Cocktail</button>
             </div>
           </div>
         </div>
@@ -35,10 +35,10 @@
       <div class="row">
         <div id=content-area: class="col m12 l9">
             <div class="row">
-              <h3 id="recipe-title" class="center s12">Recipe Title</h3>
+              <h3 id="title" class="center s12">Recipe Title</h3>
             </div>
             <div class="row">
-              <div class="col s12 m12 l3 center"><img id="recipe-image" class="responsive-img" src="https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg"></div>
+              <div class="col s12 m12 l3 center"><img id="image" class="responsive-img" src="https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg"></div>
               <div class="col s12 m8 offset-m2 l6" id="instructions-area">
                 <h4 class="flow-text center section-title">Instructions</h4>
                 <ol>
