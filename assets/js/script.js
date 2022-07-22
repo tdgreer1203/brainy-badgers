@@ -35,12 +35,13 @@ function generateRecipe(query){
                     }
                 }
              });
-             generateInstructions();
+             generateSummary();
+             generateSteps();
         }  
     })            
 }
 
-function generateInstructions() {
+function generateSummary() {
     var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/summary" + apiKey;
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
@@ -55,5 +56,17 @@ function generateInstructions() {
     });
 }
 
-
-
+function generateSteps() {
+    var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + apiKey;
+    fetch(apiUrl).then(function(response) {
+        if(response.ok) {
+            return response.json().then(function(data) {
+                console.log(data[0].steps[0].step);
+                console.log(data[0].steps[1].step)
+                for(var i = 0; i<data.steps; i++) {
+                    console.log(data.steps[i]);
+                }
+            })
+        }
+    })
+}
