@@ -26,48 +26,52 @@
             </div>
             <div class="row">
               <!-- adding click function to button whihc will later be uses to display recipe -->
-              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipes</button>
-              <button id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4">Cocktail</button>
+              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipe</button>
+              <button onclick="generateCocktail(document.getElementById('search').value.trim())" id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Cocktail</button>
             </div>
           </div>
         </div>
       </div>
-      <!-- Navbar goes here -->
-
-    <!-- Page Layout here -->
-    <div class="row">
-
-      <div id="sideBar" class="col s3 m4 l3 cyan">
-        <h3 class="center flow-text">Grocery List</h3> <!-- Note that "m4 l3" was added -->
-        <!-- Grey navigation panel
-
-              This content will be:
-          3-columns-wide on large screens,
-          4-columns-wide on medium screens,
-          12-columns-wide on small screens  -->
-          <div id="list">
-
+      <div class="row">
+        <div id=content-area: class="col m12 l9">
+            <div class="row">
+              <h3 id="title" class="center s12">Blackened Cajun Chicken</h3>
+            </div>
+            <div class="row">
+              <div class="col s12 m12 l3 center"><img id="image" class="responsive-img" src="https://spoonacular.com/recipeImages/Blackened-Cajun-Chicken-635263.jpg"></div>
+              <div class="col s12 m8 offset-m2 l6" id="instructions-area">
+                <h4 class="flow-text center section-title">Summary</h4>
+                <ol id="instructions"></ol>
+                  <p id="summary">
+                    Blackened Cajun Chicken might be just the <b>Cajun</b> recipe you are searching for. This recipe serves 4 and costs $1.68 per serving. Watching your figure? This gluten free and dairy free recipe has <b>444 calories</b>, <b>37g of protein</b>, and <b>30g of fat</b> per serving. 
+                    This recipe from Foodista requires ground cumin, mustard, brown sugar, and cayenne pepper. 5 people were glad they tried this recipe. It works well as a main course. From preparation to the plate, this recipe takes around <b>45 minutes</b>. Taking all factors into account, 
+                    this recipe <b>earns a spoonacular score of 51%</b>, which is solid. </p>
+              </div>
+              <div class="col s12 m12 l3" id="instructions-area">
+                <h4 class="flow-text center section-title">Ingredients</h4>
+                <ul id="ingredient-list" class="center">
+                  <li>bay leaves</li> <li>black pepper</li> <li>brown sugar</li> <li>cayenne pepper</li> <li>dried rosemary</li> <li>dried thyme</li> 
+                  <li>dry mustard</li> <li>garlic powder</li> <li>ground cumin</li> <li>onion powder</li> <li>paprika</li> <li>salt</li> <li>chicken</li>
+                </ul>
+              </div>
+            </div> 
+          </div>
+          <div id="sideBar" class="col s12 m12 l3 cyan lighten-3">
+            <h3 class="center flow-text">Grocery List</h3>
+            <div class="divider"></div>
+          <div id="list" class="center">
+            <ul id="grocery-list">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+            </ul>
           </div>
           <div class="btnCenter row">
-            <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col offset-m4">Save List</button>
-          </div>
-          
+            <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col s12">Save List</button>
+          </div>          
+        </div>
       </div>
 
-      <div class="col s9 m8 l9 teal">
-         <!-- Note that "m8 l9" was added -->
-        <!-- Teal page content -->
-          <div id="content-area" class="col s12 m9 center section">
-          <div class="row section" id="content-section">
-            <h2>Recipe Area</h2>
-            <div id="recipeCall"></div>
-            <a id ="recipeLink" target="_blank" style="color: red">Go to Recipe</a>
-            <div id="ingredientsCall"></div>
-          </div>
-          <!-- <div class="row section cyan lighten-5" id="popular-recipes">
-            <h2>Popular Recipes</h2> 
-          </div> -->
-        </div> 
+
 <!-- 
               This content will be:
           9-columns-wide on large screens,
@@ -79,6 +83,12 @@
     </div>  
              
     </main>
+    </div>
+  </div>  
+  <footer class="row section black center">
+    <h4 class="flow-text white-text">Brainy Badgers - &copy; 2022. All Rights Reserved</h4>
+  </footer>  
+</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
