@@ -1,22 +1,15 @@
+const apiKey = "?apiKey=715f411199a4422e9982991f89fdb06a";
+
 var titleEl = document.getElementById('title');
 var imageEl = document.getElementById('image');
 var ingredientListEl = document.getElementById('ingredient-list')
-
-//
-
-
+var recipeStepsEl = document.getElementById('reciep-steps');
+var recipeSummaryEl = document.getElementById('recipe-summary');
 
 var recipeId;
-
-
-// Array so that the recipe button generates a random recipe from the array
 var recipeArray = [];
-
-// array so that we can run a for loop and generate all the ingredient names to the DOM
 var ingredientNameArray = [];
 
-
-// generates a random integer for recipeArray
 function getRandomInt() {
     return Math.floor(Math.random() * 30);
 }
@@ -25,9 +18,8 @@ function getRandomInt() {
 //  an image of the dish, a link to the recipe website, adn the names of the ingredients for the recipe. 
 
 function generateRecipe(query){
-    // this api will call the ingredient name and picture to the dom
     $.ajax({
-        url:"https://api.spoonacular.com/recipes/search?apiKey=d5f1707aa8a94f70a3fce40a554aebc6&number=30&query="+ query,
+        url:"https://api.spoonacular.com/recipes/search" + apiKey + "&number=30&query="+ query,
         success: function(res){
             var randomIndex = getRandomInt();
             titleEl.innerHTML = res.results[randomIndex].title;
@@ -35,15 +27,33 @@ function generateRecipe(query){
             recipeId = res.results[randomIndex].id 
 
             $.ajax({
-                url:"https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget.json?apiKey=d5f1707aa8a94f70a3fce40a554aebc6",
+                url:"https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget.json" + apiKey,
                 success: function(res){
                     ingredientListEl.innerHTML = ''
                     for (var i = 0; res.ingredients.length; i++) {
-                        ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].name + "</li>"
+                        ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].name + "</li>";
                     }
                 }
              });
+             generateInstructions();
         }  
     })            
 }
+
+function generateInstructions() {
+    var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/summary" + apiKey;
+    fetch(apiUrl).then(function(response) {
+        if(response.ok) {
+            return response.json().then(function(data) {
+                recipeSummaryEl.innerHTML = data.summary;
+            })
+        } else {
+            console.log(error);
+        }
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
+
+
 

@@ -33,30 +33,30 @@
         </div>
       </div>
       <div class="row">
-        <div id=content-area: class="col m12 l9">
-            <div class="row">
-              <h3 id="title" class="center s12">Recipe Title</h3>
+        <div id="content-area" class="col m12 l8">
+            <div class="row center">
+              <h3 id="title" class="center">Recipe Title</h3>
             </div>
             <div class="row">
-              <div class="col s12 m12 l3 center"><img id="image" class="responsive-img" src="https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg"></div>
-              <div class="col s12 m8 offset-m2 l6" id="instructions-area">
+              
+              <div class="col s12 m12 l12 offset-l2" id="instructions-area">
+                <div class="row s12 m12 l10 center">
+                  <img id="image" class="responsive-img center" src="https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg">
+                </div>
                 <h4 class="flow-text center section-title">Instructions</h4>
-                <ol>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
+                <ol id="reicpe-steps">
                   <li>Do this first.</li>
                 </ol>
-                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-              </div>
-              <div class="col s12 m12 l3" id="instructions-area">
-                <h4 class="flow-text center section-title">Ingredients</h4>
-                <ul id="ingredient-list" class="center"></ul>
+                  <p id="recipe-summary"></p>
               </div>
             </div> 
           </div>
-          <div id="sideBar" class="col s12 m12 l3 cyan lighten-3">
+          <div class="col s12 m12 l2 teal lighten-3">
+            <h4 class="flow-text center">Ingredient List</h4>
+            <div class="divider"></div>
+            <ul id="ingredient-list" class="center"></ul>
+          </div>
+          <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
             <h3 class="center flow-text">Grocery List</h3>
             <div class="divider"></div>
           <div id="list" class="center">

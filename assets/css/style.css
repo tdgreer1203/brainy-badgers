@@ -7,10 +7,6 @@
     border-bottom: 3px solid black;
 }
 
-#content-section {
-    height: 65vh;
-}
-
 ::placeholder {
     color: black;
     text-align: center;
@@ -32,6 +28,10 @@
     margin: 10px 0 70px 0;
 }
 
+#title {
+    width: 100%;
+}
+
 #image {
     max-height: 50vh;
 }
@@ -45,26 +45,37 @@
 }
 
 #sideBar {
-    height: 70vh;
     border-left: 3px solid black;
 }
 
 #list {
     margin: 20px 0;
-    height: 65vh;
-}
-
-#list {
-    height: 50vh;
-    margin-bottom: 20px;
 }
 
 #saveBtn {
     align-content: center;
 }
 
+#ingredient-list {
+    font-size: 18px;
+}
+
+#ingredient-list li {
+    margin-bottom: 10px;
+}
+
+#grocery-list {
+    font-size: 18px;
+}
+
+#grocery-list li {
+    margin-bottom: 10px;
+}
+
 .row {
     margin: 0;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 992px) {
