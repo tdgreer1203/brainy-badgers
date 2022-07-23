@@ -27,6 +27,7 @@ function getRandomRec() {
     return Math.floor(Math.random() * 30);
 }
 
+<<<<<<< HEAD
 // generates a random integer for cocktail API call
 function getRandomCockt() {
     return Math.floor(Math.random() * 10);
@@ -34,6 +35,8 @@ function getRandomCockt() {
 
 // this function will generate a recipe on screen from the api call and the function will include title of dish,
 //  an image of the dish, and the names of the ingredients for the recipe, summary, and source link
+=======
+>>>>>>> 9da869b9024587a8196fe1098562bfef8fb54f99
 function generateRecipe(query){
     $.ajax({
         
@@ -55,6 +58,7 @@ function generateRecipe(query){
                 success: function(res){
                     ingredientListEl.innerHTML = ''
                     for (var i = 0; res.ingredients.length; i++) {
+<<<<<<< HEAD
                         // creating a list element inside the unordered list and will loop until all ingredient names are listed in DOM
                         ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].amount.us.value 
                         + " " + res.ingredients[i].amount.us.unit + " - " + res.ingredients[i].name + "</li>";
@@ -62,16 +66,35 @@ function generateRecipe(query){
                 }
              });
             
+=======
+                        ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].name + "</li>";
+                        var ingredient = {
+                            name: res.ingredients[i].name,
+                            image: res.ingredients[i].image,
+                            unit: res.ingredients[i].amount.us.unit,
+                            value: res.ingredients[i].amount.us.value
+                        }
+                        ingredientArray.push(ingredient);
+                    }
+                }
+             });
+             generateSummary();
+>>>>>>> 9da869b9024587a8196fe1098562bfef8fb54f99
              generateSteps();
         }  
     })            
 }
 
+<<<<<<< HEAD
 function generateSteps() {
     // clears out previous steps
     recipeStepsEl.innerHTML = '';
     
     var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + apiKey;
+=======
+function generateSummary() {
+    var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/summary" + apiKey;
+>>>>>>> 9da869b9024587a8196fe1098562bfef8fb54f99
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
             return response.json().then(function(data) {
@@ -87,6 +110,7 @@ function generateSteps() {
     });
 }
 
+<<<<<<< HEAD
 // this function will generate a cocktail to the DOM including name, image, instructions, and ingredients
 function generateCocktail(query) {
     // this call will generate the cocktail name and image to the DOM
@@ -114,3 +138,21 @@ function generateCocktail(query) {
         }
     });
 }
+=======
+function generateSteps() {
+    var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + apiKey;
+    fetch(apiUrl).then(function(response) {
+        if(response.ok) {
+            return response.json().then(function(data) {
+                for(var i = 0; i<data[0].steps.length; i++) {
+                    recipeStepsEl.innerHTML = recipeStepsEl.innerHTML + "<li>" + data[0].steps[i].step + "</li>";
+                }
+            })
+        } else {
+            console.log(error);
+        }
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
+>>>>>>> 9da869b9024587a8196fe1098562bfef8fb54f99
