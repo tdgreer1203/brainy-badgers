@@ -67,7 +67,19 @@
     margin: 0;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 992px) {
+=======
+<<<<<<< HEAD
+#recipeCall h3 {
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+=======
+@media only screen and (max-width: 992px) {
+>>>>>>> 114f3e68ee7b28d4469202dc326d5165944018d6
+>>>>>>> 2b6d889b27c55d0942364556a03d1bd078bdfad1
     #search-area {
         height: auto;
     }
