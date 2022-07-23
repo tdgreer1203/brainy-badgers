@@ -135,6 +135,7 @@ function generateCocktail(query) {
             + '<li>' + res.drinks[randomCocktNum].strMeasure15 + " - " + res.drinks[randomCocktNum].strIngredient15 + '</li>';
             
             sourceLinkEl.innerHTML = '';
+            recipeStepsEl.innerHTML = '';
         }
     });
 }
