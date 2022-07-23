@@ -8,14 +8,12 @@ var recipeSummaryEl = document.getElementById('recipe-summary');
 
 var recipeId;
 var recipeArray = [];
-var ingredientNameArray = [];
+var ingredientArray = [];
+var groceryList = [];
 
 function getRandomInt() {
     return Math.floor(Math.random() * 30);
 }
-
-// this function will generate a recipe on screen from the api call and the function will include title of dish,
-//  an image of the dish, a link to the recipe website, adn the names of the ingredients for the recipe. 
 
 function generateRecipe(query){
     $.ajax({
@@ -32,6 +30,13 @@ function generateRecipe(query){
                     ingredientListEl.innerHTML = ''
                     for (var i = 0; res.ingredients.length; i++) {
                         ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].name + "</li>";
+                        var ingredient = {
+                            name: res.ingredients[i].name,
+                            image: res.ingredients[i].image,
+                            unit: res.ingredients[i].amount.us.unit,
+                            value: res.ingredients[i].amount.us.value
+                        }
+                        ingredientArray.push(ingredient);
                     }
                 }
              });
