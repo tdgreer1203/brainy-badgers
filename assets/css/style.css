@@ -72,6 +72,10 @@
   margin-bottom: 10px;
 }
 
+#copyRight {
+  width: 100%;
+}
+
 .row {
   margin: 0;
   display: flex;

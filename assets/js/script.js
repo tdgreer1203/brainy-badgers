@@ -4,8 +4,10 @@
 // Jorge Second API Key = ?apiKey=2831de2f06594a778a430bad8ab00cba
 // DJ API Key = ?apiKey=e70534b658a340b99af654cbac055309
 
+//If 402 use different API Key
+
 // Active Api Key
-const apiKey = "?apiKey=d5f1707aa8a94f70a3fce40a554aebc6";
+const apiKey = "?apiKey=e70534b658a340b99af654cbac055309";
 
 var titleEl = document.getElementById("title");
 var imageEl = document.getElementById("image");
