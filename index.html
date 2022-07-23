@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Brainy Recipes</title>
   </head>
@@ -33,6 +34,7 @@
         </div>
       </div>
       <div class="row">
+
         <div id=content-area: class="col m12 l9">
             <div class="row">
 
@@ -75,10 +77,30 @@
                   <li>bay leaves</li> <li>black pepper</li> <li>brown sugar</li> <li>cayenne pepper</li> <li>dried rosemary</li> <li>dried thyme</li> 
                   <li>dry mustard</li> <li>garlic powder</li> <li>ground cumin</li> <li>onion powder</li> <li>paprika</li> <li>salt</li> <li>chicken</li>
                 </ul>
+
+        <div id="content-area" class="col s12 m12 l8">
+            <div class="row center">
+              <h3 id="title" class="center">Recipe Title</h3>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12 offset-l2" id="instructions-area">
+                <div class="row s12 m12 l10 center">
+                  <img id="image" class="responsive-img center" src="">
+                </div>
+                <!--<h4 class="flow-text center section-title">Instructions</h4>-->
+                <ol id="recipe-steps"></ol>
+                <p id="recipe-summary"></p>
+                <a href="" id="sourceLink" target="_blank" style="color: red">Click Here For Full Recipe</a>
+
               </div>
             </div> 
           </div>
-          <div id="sideBar" class="col s12 m12 l3 cyan lighten-3">
+          <div class="col s12 m12 l2 teal lighten-3">
+            <h4 class="flow-text center">Ingredient List</h4>
+            <div class="divider"></div>
+            <ul id="ingredient-list" class="center"></ul>
+          </div>
+          <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
             <h3 class="center flow-text">Grocery List</h3>
             <div class="divider"></div>
           <div id="list" class="center">
@@ -91,28 +113,15 @@
             <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col s12">Save List</button>
           </div>          
         </div>
-      </div>
-
-
-<!-- 
-              This content will be:
-          9-columns-wide on large screens,
-          8-columns-wide on medium screens,
-          12-columns-wide on small screens  -->
-
-      </div>
-
-    </div>  
-             
+      </div>             
     </main>
-    </div>
-  </div>  
   <footer class="row section black center">
     <h4 class="flow-text white-text">Brainy Badgers - &copy; 2022. All Rights Reserved</h4>
   </footer>  
-</main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/js/script.js"></script>
   </body>
 </html>

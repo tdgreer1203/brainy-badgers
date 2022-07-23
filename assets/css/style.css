@@ -7,10 +7,6 @@
     border-bottom: 3px solid black;
 }
 
-#content-section {
-    height: 65vh;
-}
-
 ::placeholder {
     color: black;
     text-align: center;
@@ -32,7 +28,11 @@
     margin: 10px 0 70px 0;
 }
 
-#recipe-image {
+#title {
+    width: 100%;
+}
+
+#image {
     max-height: 50vh;
 }
 
@@ -45,31 +45,28 @@
 }
 
 #sideBar {
-    height: 70vh;
     border-left: 3px solid black;
 }
 
 #list {
     margin: 20px 0;
-    height: 65vh;
-}
-
-#list {
-    height: 50vh;
-    margin-bottom: 20px;
 }
 
 #saveBtn {
     align-content: center;
 }
 
+<<<<<<< HEAD
 .row {
     margin: 0;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @media only screen and (max-width: 992px) {
 =======
+=======
+>>>>>>> 707776aea18178259759e8968d40b1fe1188923d
 <<<<<<< HEAD
 #recipeCall h3 {
     font-size: 25px;
@@ -79,7 +76,40 @@
 =======
 @media only screen and (max-width: 992px) {
 >>>>>>> 114f3e68ee7b28d4469202dc326d5165944018d6
+<<<<<<< HEAD
 >>>>>>> 2b6d889b27c55d0942364556a03d1bd078bdfad1
+=======
+=======
+#ingredient-list {
+    font-size: 18px;
+}
+
+#ingredient-list li {
+    margin-bottom: 10px;
+}
+
+#grocery-list {
+    font-size: 18px;
+}
+
+#grocery-list li {
+    margin-bottom: 10px;
+}
+
+.row {
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 992px) {
+    .row {
+        margin: 0;
+        display: block;
+    }
+
+>>>>>>> develop
+>>>>>>> 707776aea18178259759e8968d40b1fe1188923d
     #search-area {
         height: auto;
     }
