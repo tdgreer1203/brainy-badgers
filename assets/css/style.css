@@ -1,150 +1,132 @@
 #header-icon {
     font-size: 40px;
-}
-
-#search-area {
+  }
+  
+  #search-area {
     padding-top: 30px;
     border-bottom: 3px solid black;
-}
-
-::placeholder {
+  }
+  
+  ::placeholder {
     color: black;
     text-align: center;
     font-size: 14px;
-}
-
-#randomBtns {
+  }
+  
+  #randomBtns {
     padding-top: 20px;
     display: flex;
     justify-content: center;
-}
-
-#recipeBtn {
+  }
+  
+  #recipeBtn {
     margin-right: 15px;
     margin-bottom: 50px;
-}
-
-#add-to-list-btn {
+  }
+  
+  #add-to-list-btn {
     margin: 10px 0 70px 0;
-}
-
-#title {
+  }
+  
+  #title {
     width: 100%;
-}
-
-#image {
+  }
+  
+  #image {
     max-height: 50vh;
-}
-
-.section-title {
+  }
+  
+  .section-title {
     text-decoration: underline;
-}
-
-#cocktailBtn {
+  }
+  
+  #cocktailBtn {
     margin-left: 15px;
-}
-
-#sideBar {
+  }
+  
+  #sideBar {
     border-left: 3px solid black;
-}
-
-#list {
+  }
+  
+  #list {
     margin: 20px 0;
-}
-
-#saveBtn {
+  }
+  
+  #saveBtn {
     align-content: center;
-}
-
-<<<<<<< HEAD
-.row {
-    margin: 0;
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-@media only screen and (max-width: 992px) {
-=======
-=======
->>>>>>> 707776aea18178259759e8968d40b1fe1188923d
-<<<<<<< HEAD
-#recipeCall h3 {
-    font-size: 25px;
-}
-
-@media only screen and (max-width: 600px) {
-=======
-@media only screen and (max-width: 992px) {
->>>>>>> 114f3e68ee7b28d4469202dc326d5165944018d6
-<<<<<<< HEAD
->>>>>>> 2b6d889b27c55d0942364556a03d1bd078bdfad1
-=======
-=======
-#ingredient-list {
+  }
+  
+  #ingredient-list {
     font-size: 18px;
-}
-
-#ingredient-list li {
+  }
+  
+  #ingredient-list li {
     margin-bottom: 10px;
-}
-
-#grocery-list {
+  }
+  
+  #grocery-list {
     font-size: 18px;
-}
-
-#grocery-list li {
+  }
+  
+  #grocery-list li {
     margin-bottom: 10px;
-}
-
-.row {
+  }
+  
+  #copyRight {
+    width: 100%;
+  }
+  
+  .row {
     margin: 0;
     display: flex;
     justify-content: space-evenly;
-}
-
-@media only screen and (max-width: 992px) {
+  }
+  
+  @media only screen and (max-width: 992px) {
     .row {
-        margin: 0;
-        display: block;
+      margin: 0;
+      display: block;
     }
-
->>>>>>> develop
->>>>>>> 707776aea18178259759e8968d40b1fe1188923d
+  
+    #header-icon {
+      display: none;
+    }
+  
     #search-area {
-        height: auto;
+      height: auto;
     }
-
+  
     #content-section {
-        height: auto;
+      height: auto;
     }
-
+  
     #recipeBtn {
-        margin-bottom: 10px;
+      margin-bottom: 10px;
     }
-
+  
     #cocktailBtn {
-        margin-left: 0;
-        margin-bottom: 10px;
+      margin-left: 0;
+      margin-bottom: 10px;
     }
-
+  
     #sideBar {
-        height: auto;
-        border: none;
+      height: auto;
+      border: none;
     }
-
+  
     #list {
-        height: auto;
+      height: auto;
     }
-
+  
     #instructions-area {
-        border-bottom: 3px solid black;
+      border-bottom: 3px solid black;
     }
-
+  
     #add-to-list-btn {
-        margin: 10px 0 60px 0;
+      margin: 10px 0 60px 0;
     }
-
+  
     #back-btn {
-        margin-bottom: 25px;
+      margin-bottom: 25px;
     }
   }
