@@ -19,14 +19,9 @@ var recipeArray = [];
 var ingredientArray = [];
 var groceryList = [];
 
-// generates a random integer for recipe API call
-function getRandomRec() {
-  return Math.floor(Math.random() * 30);
-}
-
-// generates a random integer for cocktail API call
-function getRandomCockt() {
-  return Math.floor(Math.random() * 10);
+// generates a random integer for recipe or cocktail API call
+function getRandomNum(max) {
+  return Math.floor(Math.random() * max);
 }
 
 // this function will generate a recipe on screen from the api call and the function will include title of dish,
@@ -40,7 +35,7 @@ function generateRecipe(query) {
       query +
       "&addRecipeInformation=true",
     success: function (res) {
-      var randomRecNum = getRandomRec();
+      var randomRecNum = getRandomNum(30);
       titleEl.innerHTML = res.results[randomRecNum].title;
       imageEl.setAttribute("src", res.results[randomRecNum].image);
       recipeSummaryEl.innerHTML = res.results[randomRecNum].summary;
@@ -118,7 +113,7 @@ function generateCocktail(query) {
   $.ajax({
     url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query,
     success: function (res) {
-      var randomCocktNum = getRandomCockt();
+      var randomCocktNum = getRandomNum(10);
 
       // this will add the drink name,drink image, and the instructions to the DOM
       titleEl.innerHTML = res.drinks[randomCocktNum].strDrink;

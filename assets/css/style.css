@@ -1,140 +1,128 @@
 #header-icon {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 #search-area {
-    padding-top: 30px;
-    border-bottom: 3px solid black;
+  padding-top: 30px;
+  border-bottom: 3px solid black;
 }
 
 ::placeholder {
-    color: black;
-    text-align: center;
-    font-size: 14px;
+  color: black;
+  text-align: center;
+  font-size: 14px;
 }
 
 #randomBtns {
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 #recipeBtn {
-    margin-right: 15px;
-    margin-bottom: 50px;
+  margin-right: 15px;
+  margin-bottom: 50px;
 }
 
 #add-to-list-btn {
-    margin: 10px 0 70px 0;
+  margin: 10px 0 70px 0;
 }
 
 #title {
-    width: 100%;
+  width: 100%;
 }
 
 #image {
-    max-height: 50vh;
+  max-height: 50vh;
 }
 
 .section-title {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #cocktailBtn {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 
 #sideBar {
-    border-left: 3px solid black;
+  border-left: 3px solid black;
 }
 
 #list {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 #saveBtn {
-    align-content: center;
+  align-content: center;
 }
 
-<<<<<<< HEAD
-.row {
-    margin: 0;
-}
-
-<<<<<<< HEAD
-#recipeCall h3 {
-    font-size: 25px;
-}
-
-@media only screen and (max-width: 600px) {
-=======
-@media only screen and (max-width: 992px) {
->>>>>>> 114f3e68ee7b28d4469202dc326d5165944018d6
-=======
 #ingredient-list {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 #ingredient-list li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #grocery-list {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 #grocery-list li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .row {
-    margin: 0;
-    display: flex;
-    justify-content: space-evenly;
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 992px) {
-    .row {
-        margin: 0;
-        display: block;
-    }
-
->>>>>>> develop
-    #search-area {
-        height: auto;
-    }
-
-    #content-section {
-        height: auto;
-    }
-
-    #recipeBtn {
-        margin-bottom: 10px;
-    }
-
-    #cocktailBtn {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-
-    #sideBar {
-        height: auto;
-        border: none;
-    }
-
-    #list {
-        height: auto;
-    }
-
-    #instructions-area {
-        border-bottom: 3px solid black;
-    }
-
-    #add-to-list-btn {
-        margin: 10px 0 60px 0;
-    }
-
-    #back-btn {
-        margin-bottom: 25px;
-    }
+  .row {
+    margin: 0;
+    display: block;
   }
+
+  #header-icon {
+    display: none;
+  }
+
+  #search-area {
+    height: auto;
+  }
+
+  #content-section {
+    height: auto;
+  }
+
+  #recipeBtn {
+    margin-bottom: 10px;
+  }
+
+  #cocktailBtn {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  #sideBar {
+    height: auto;
+    border: none;
+  }
+
+  #list {
+    height: auto;
+  }
+
+  #instructions-area {
+    border-bottom: 3px solid black;
+  }
+
+  #add-to-list-btn {
+    margin: 10px 0 60px 0;
+  }
+
+  #back-btn {
+    margin-bottom: 25px;
+  }
+}
