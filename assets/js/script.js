@@ -3,7 +3,7 @@ const apiKey = "?apiKey=715f411199a4422e9982991f89fdb06a";
 var titleEl = document.getElementById('title');
 var imageEl = document.getElementById('image');
 var ingredientListEl = document.getElementById('ingredient-list')
-var recipeStepsEl = document.getElementById('reciep-steps');
+var recipeStepsEl = document.getElementById('recipe-steps');
 var recipeSummaryEl = document.getElementById('recipe-summary');
 
 var recipeId;
@@ -61,12 +61,14 @@ function generateSteps() {
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
             return response.json().then(function(data) {
-                console.log(data[0].steps[0].step);
-                console.log(data[0].steps[1].step)
-                for(var i = 0; i<data.steps; i++) {
-                    console.log(data.steps[i]);
+                for(var i = 0; i<data[0].steps.length; i++) {
+                    recipeStepsEl.innerHTML = recipeStepsEl.innerHTML + "<li>" + data[0].steps[i].step + "</li>";
                 }
             })
+        } else {
+            console.log(error);
         }
-    })
+    }).catch(function(error) {
+        console.log(error);
+    });
 }
