@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Brainy Recipes</title>
   </head>
@@ -14,7 +23,12 @@
     <header>
       <nav class="cyan">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center"><i id="header-icon" class="material-icons">local_dining</i> Brainy Recipes</a>
+          <a href="#" class="brand-logo center flow-text"
+            ><i id="header-icon" class="material-icons flow-text"
+              >local_dining</i
+            >
+            Brainy Recipes</a
+          >
         </div>
       </nav>
     </header>
@@ -23,86 +37,60 @@
         <div id="search-area" class="col s12 center grey lighten-4">
           <div class="container">
             <div class="row">
-              <input type="text" id="search" placeholder="Search" class="col s12 m6 offset-m3">
+              <input
+                type="text"
+                id="search"
+                placeholder="Search"
+                class="col s12 m6 offset-m3"
+              />
             </div>
             <div class="row">
-              <!-- adding click function to button whihc will later be uses to display recipe -->
-              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipe</button>
-              <button onclick="generateCocktail(document.getElementById('search').value.trim())" id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Cocktail</button>
+              <!-- adding click function to button which will later be uses to display recipe -->
+              <button
+                onclick="generateRecipe(document.getElementById('search').value.trim())"
+                id="recipeBtn"
+                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
+              >
+                Recipe
+              </button>
+              <button
+                onclick="generateCocktail(document.getElementById('search').value.trim())"
+                id="cocktailBtn"
+                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
+              >
+                Cocktail
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-
-        <div id=content-area: class="col m12 l9">
-            <div class="row">
-
-              <h3 id="recipe-title" class="center s12">Recipe Title</h3>
-            </div>
-            <div class="row">
-              <div class="col s12 m12 l3 center"><img id="recipe-image" class="responsive-img" src="https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg"></div>
-              <div class="col s12 m8 offset-m2 l6" id="instructions-area">
-                <h4 class="flow-text center section-title">Instructions</h4>
-                <ol>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
-                  <li>Do this first.</li>
-                </ol>
-                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-              </div>
-              <div class="col s12 m12 l3" id="instructions-area">
-                <h4 class="flow-text center section-title">Ingredients</h4>
-                <ul id="ingredient-list" class="center"></ul>
-
-              <h3 id="title" class="center s12">Blackened Cajun Chicken</h3>
-            </div>
-            <div class="row">
-              <div class="col s12 m12 l3 center"><img id="image" class="responsive-img" src="https://spoonacular.com/recipeImages/Blackened-Cajun-Chicken-635263.jpg"></div>
-              <div class="col s12 m8 offset-m2 l6" id="instructions-area">
-                <h4 class="flow-text center section-title">Summary</h4>
-                <ol id="instructions"></ol>
-                <p id="summary">
-                  Blackened Cajun Chicken might be just the <b>Cajun</b> recipe you are searching for. This recipe serves 4 and costs $1.68 per serving. Watching your figure? This gluten free and dairy free recipe has <b>444 calories</b>, <b>37g of protein</b>, and <b>30g of fat</b> per serving. 
-                  This recipe from Foodista requires ground cumin, mustard, brown sugar, and cayenne pepper. 5 people were glad they tried this recipe. It works well as a main course. From preparation to the plate, this recipe takes around <b>45 minutes</b>. Taking all factors into account, 
-                  this recipe <b>earns a spoonacular score of 51%</b>, which is solid. 
-                </p>
-                <a href="http://www.foodista.com/recipe/6Y5FNTJW/blackened-cajun-chicken" id="sourceLink" target="_blank" style="color: red">Click Here For Full Recipe</a>
-              </div>
-              <div class="col s12 m12 l3" id="instructions-area">
-                <h4 class="flow-text center section-title">Ingredients</h4>
-                <ul id="ingredient-list" class="center">
-                  <li>bay leaves</li> <li>black pepper</li> <li>brown sugar</li> <li>cayenne pepper</li> <li>dried rosemary</li> <li>dried thyme</li> 
-                  <li>dry mustard</li> <li>garlic powder</li> <li>ground cumin</li> <li>onion powder</li> <li>paprika</li> <li>salt</li> <li>chicken</li>
-                </ul>
-
         <div id="content-area" class="col s12 m12 l8">
-            <div class="row center">
-              <h3 id="title" class="center">Recipe Title</h3>
-            </div>
-            <div class="row">
-                <div class="col s12 m12 l12 offset-l2" id="instructions-area">
-                <div class="row s12 m12 l10 center">
-                  <img id="image" class="responsive-img center" src="">
-                </div>
-                <!--<h4 class="flow-text center section-title">Instructions</h4>-->
-                <ol id="recipe-steps"></ol>
-                <p id="recipe-summary"></p>
-                <a href="" id="sourceLink" target="_blank" style="color: red">Click Here For Full Recipe</a>
-
+          <div class="row center">
+            <h3 id="title" class="center">Recipe Title</h3>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12 offset-l2" id="instructions-area">
+              <div class="row s12 m12 l10 center">
+                <img id="image" class="responsive-img center" src="" />
               </div>
-            </div> 
+              <!--<h4 class="flow-text center section-title">Instructions</h4>-->
+              <ol id="recipe-steps"></ol>
+              <p id="recipe-summary"></p>
+              <a href="" id="sourceLink" target="_blank" style="color: red"
+                >Click Here For Full Recipe</a
+              >
+            </div>
           </div>
-          <div class="col s12 m12 l2 teal lighten-3">
-            <h4 class="flow-text center">Ingredient List</h4>
-            <div class="divider"></div>
-            <ul id="ingredient-list" class="center"></ul>
-          </div>
-          <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
-            <h3 class="center flow-text">Grocery List</h3>
-            <div class="divider"></div>
+        </div>
+        <div class="col s12 m12 l2 teal lighten-3">
+          <h4 class="flow-text center">Ingredient List</h4>
+          <div class="divider"></div>
+          <ul id="ingredient-list" class="center"></ul>
+        </div>
+        <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
+          <h3 class="center flow-text">Grocery List</h3>
+          <div class="divider"></div>
           <div id="list" class="center">
             <ul id="grocery-list">
               <li>List Item 1</li>
@@ -110,18 +98,25 @@
             </ul>
           </div>
           <div class="btnCenter row">
-            <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col s12">Save List</button>
-          </div>          
+            <button
+              id="saveBtn"
+              class="hoverable waves-effect waves-light btn btn-large col s12"
+            >
+              Save List
+            </button>
+          </div>
         </div>
-      </div>             
+      </div>
     </main>
-  <footer class="row section black center">
-    <h4 class="flow-text white-text">Brainy Badgers - &copy; 2022. All Rights Reserved</h4>
-  </footer>  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <footer class="row s12 m12 l12 section black center">
+      <h4 id="copyRight" class="flow-text s12 m12 l12 white-text center">
+        Brainy Badgers - &copy; 2022. All Rights Reserved
+      </h4>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
