@@ -5,7 +5,7 @@ var jorgeApi = '?apiKey=d5f1707aa8a94f70a3fce40a554aebc6';
 var jorgeApi2 = '?apiKey=2831de2f06594a778a430bad8ab00cba';
 var joshuaApi = '';
 var djApi = '';
-var joshuaApi = '';
+var theoApi = '';
 
 // Cocktail API Keys, since we are in a test environment for bootcamp project we will be use text apiKey = 1
 
@@ -16,10 +16,9 @@ var titleEl = document.getElementById('title');
 var imageEl = document.getElementById('image');
 var ingredientListEl = document.getElementById('ingredient-list');
 var summaryEl = document.getElementById('summary');
-var instructionsEl = document.getElementById('instructions');
+var instructionsListEl = document.getElementById('instructions');
 var sourceLinkEl = document.getElementById('sourceLink');
 //
-
 
 
 var recipeId;
@@ -49,13 +48,15 @@ function getRandomCoc() {
 function generateRecipe(query){
     // this api will call the ingredient name and picture to the dom
     $.ajax({
-        url:"https://api.spoonacular.com/recipes/search" + jorgeApi2 + "&number=30&query="+ query,
+        url:"https://api.spoonacular.com/recipes/complexSearch" + jorgeApi2 + "&number=30&query=" + query + "&addRecipeInformation=true",
         success: function(res){  //res is short of response
             var randomRecNumber = getRandomRec();
             titleEl.innerHTML = res.results[randomRecNumber].title;
-            imageEl.setAttribute('src',res.baseUri + res.results[randomRecNumber].image);
-            sourceLinkEl.setAttribute("href", res.results[randomRecNumber].sourceUrl);
-            // links id from first api call to recipeID which will be added into URL for second call
+            imageEl.setAttribute('src', res.results[randomRecNumber].image);
+            sourceLinkEl.setAttribute("href", res.results[randomRecNumber].spoonacularSourceUrl);
+            summaryEl.innerHTML = res.results[randomRecNumber].summary;
+
+            // links id from first api call to recipeID which will be added into URL for following calls 
             recipeId = res.results[randomRecNumber].id 
             console.log(recipeId);
 
@@ -66,31 +67,19 @@ function generateRecipe(query){
                     ingredientListEl.innerHTML = ''
                     for (var i = 0; res.ingredients.length; i++) {
                         // creating a list element inside the unordered list and will loop until all ingredient names are listed in DOM
-                        ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].name + "</li>";
+                        ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].amount.us.value + " " + res.ingredients[i].amount.us.unit + " - " + res.ingredients[i].name + "</li>";
                     }
                 }
             });
 
-            // //  and step by step instructions, using recipe Id
-            // $.ajax({
-            //     url: "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + jorgeApi2,
-            //     success: function(res){
-            //         // instructionsEl.innerHTML = ''
-            //         // for (var i = 0; res.steps.length; i++){
-            //             // creating a list element inside of the ordered list and will loop until all steps are listed in the DOM
-            //             // instructionsEl.innerHTML = instructionsEl.innerHTML + "<li>" + res.steps[i].step + "</li>";
-            //             instructionsEl.innerHTML =res[0].steps.step
-            //         // }
-            //     }
-            // });
-
-            //  will generate a recipe sumamry to be added to the <p> element class id Sumarry, using the Recipe Id
-             $.ajax({
-                url:"https://api.spoonacular.com/recipes/" + recipeId + "/summary" + jorgeApi2,
+            //  add step by step instructions, using recipe Id
+            $.ajax({
+                url: "https://api.spoonacular.com/recipes/informationBulk" + jorgeApi2 + "&ids=" + recipeId,
                 success: function(res){
-                    summaryEl.innerHTML = res.summary;
+                    instructionsListEl.innerHTML = res.cookingMinutes;     
                 }
             });
+
         }  
     });            
 }
