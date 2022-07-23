@@ -7,7 +7,7 @@ var joshuaApi = '';
 var djApi = '';
 var joshuaApi = '';
 
-// Cocktail API Keys, since we are in a test enrionment for bootcamp project we will be use text apiKey = 1
+// Cocktail API Keys, since we are in a test environment for bootcamp project we will be use text apiKey = 1
 
 
 
@@ -17,6 +17,7 @@ var imageEl = document.getElementById('image');
 var ingredientListEl = document.getElementById('ingredient-list');
 var summaryEl = document.getElementById('summary');
 var instructionsEl = document.getElementById('instructions');
+var sourceLinkEl = document.getElementById('sourceLink');
 //
 
 
@@ -40,7 +41,7 @@ function getRandomRec() {
 }
 
 function getRandomCoc() {
-    return Math.floor(Math.random() * 5);
+    return Math.floor(Math.random() * 10);
 }
 
 // this function will generate a recipe on screen from the api call and the function will include title of dish,
@@ -53,6 +54,7 @@ function generateRecipe(query){
             var randomRecNumber = getRandomRec();
             titleEl.innerHTML = res.results[randomRecNumber].title;
             imageEl.setAttribute('src',res.baseUri + res.results[randomRecNumber].image);
+            sourceLinkEl.setAttribute("href", res.results[randomRecNumber].sourceUrl);
             // links id from first api call to recipeID which will be added into URL for second call
             recipeId = res.results[randomRecNumber].id 
             console.log(recipeId);
@@ -69,18 +71,18 @@ function generateRecipe(query){
                 }
             });
 
-            //  and step by step instructions, using recipe Id
-            $.ajax({
-                url: "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + jorgeApi2,
-                success: function(res){
-                    // instructionsEl.innerHTML = ''
-                    // for (var i = 0; res.steps.length; i++){
-                        // creating a list element inside of the ordered list and will loop until all steps are listed in the DOM
-                        // instructionsEl.innerHTML = instructionsEl.innerHTML + "<li>" + res.steps[i].step + "</li>";
-                        instructionsEl.innerHTML =res[0].steps.step
-                    // }
-                }
-            });
+            // //  and step by step instructions, using recipe Id
+            // $.ajax({
+            //     url: "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + jorgeApi2,
+            //     success: function(res){
+            //         // instructionsEl.innerHTML = ''
+            //         // for (var i = 0; res.steps.length; i++){
+            //             // creating a list element inside of the ordered list and will loop until all steps are listed in the DOM
+            //             // instructionsEl.innerHTML = instructionsEl.innerHTML + "<li>" + res.steps[i].step + "</li>";
+            //             instructionsEl.innerHTML =res[0].steps.step
+            //         // }
+            //     }
+            // });
 
             //  will generate a recipe sumamry to be added to the <p> element class id Sumarry, using the Recipe Id
              $.ajax({
@@ -99,8 +101,22 @@ function generateCocktail(query) {
         url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query,
         success: function(res){
             var randomCocNumber = getRandomCoc();
+
+            // this will add the drink name,drink image, and the instructions to the DOM
             titleEl.innerHTML = res.drinks[randomCocNumber].strDrink;
             imageEl.setAttribute('src', res.drinks[randomCocNumber].strDrinkThumb);
+            summaryEl.innerHTML = res.drinks[randomCocNumber].strInstructions;
+
+            
+            ingredientListEl.innerHTML ='<li>' + res.drinks[randomCocNumber].strMeasure1 + " - " + res.drinks[randomCocNumber].strIngredient1 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure2 + " - " + res.drinks[randomCocNumber].strIngredient2 + '</li>'
+            + '<li>' + res.drinks[randomCocNumber].strMeasure3 + " - " + res.drinks[randomCocNumber].strIngredient3 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure4 + " - " + res.drinks[randomCocNumber].strIngredient4 + '</li>' 
+            + '<li>' + res.drinks[randomCocNumber].strMeasure5 + " - " + res.drinks[randomCocNumber].strIngredient5 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure6 + " - " + res.drinks[randomCocNumber].strIngredient6 + '</li>'
+            + '<li>' + res.drinks[randomCocNumber].strMeasure7 + " - " + res.drinks[randomCocNumber].strIngredient7 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure8 + " - " + res.drinks[randomCocNumber].strIngredient8 + '</li>'
+            + '<li>' + res.drinks[randomCocNumber].strMeasure9 + " - " + res.drinks[randomCocNumber].strIngredient9 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure10 + " - " + res.drinks[randomCocNumber].strIngredient10 + '</li>'
+            + '<li>' + res.drinks[randomCocNumber].strMeasure11 + " - " + res.drinks[randomCocNumber].strIngredient11 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure12 + " - " + res.drinks[randomCocNumber].strIngredient12 + '</li>'
+            + '<li>' + res.drinks[randomCocNumber].strMeasure13 + " - " + res.drinks[randomCocNumber].strIngredient13 + '</li>' + '<li>' + res.drinks[randomCocNumber].strMeasure14 + " - " + res.drinks[randomCocNumber].strIngredient14 + '</li>'
+            + '<li>' + res.drinks[randomCocNumber].strMeasure15 + " - " + res.drinks[randomCocNumber].strIngredient15 + '</li>';
+        
         }
     });
 }
