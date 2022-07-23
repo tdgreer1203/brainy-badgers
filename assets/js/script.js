@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 var recipeTitleEl = document.getElementById('recipe-title');
 var recipeImageEl = document.getElementById('recipe-image');
 var ingredientListEl = document.getElementById('ingredient-list')
-=======
 // Place your API Keys here
 
 // spponacular API Keys:
@@ -23,7 +22,6 @@ var ingredientListEl = document.getElementById('ingredient-list');
 var summaryEl = document.getElementById('summary');
 var instructionsEl = document.getElementById('instructions');
 var sourceLinkEl = document.getElementById('sourceLink');
->>>>>>> 2b6d889b27c55d0942364556a03d1bd078bdfad1
 //
 
 
@@ -55,7 +53,7 @@ function getRandomCoc() {
 function generateRecipe(query){
     // this api will call the ingredient name and picture to the dom
     $.ajax({
-<<<<<<< HEAD
+
         url:"https://api.spoonacular.com/recipes/search?apiKey=d5f1707aa8a94f70a3fce40a554aebc6&number=30&query="+ query,
         success: function(res){
             var randomIndex = getRandomInt();
@@ -73,8 +71,9 @@ function generateRecipe(query){
                 }
              });
         }  
-    })            
-=======
+    })   
+
+        $.ajax({
         url:"https://api.spoonacular.com/recipes/search" + jorgeApi2 + "&number=30&query="+ query,
         success: function(res){  //res is short of response
             var randomRecNumber = getRandomRec();
@@ -145,5 +144,43 @@ function generateCocktail(query) {
         
         }
     });
->>>>>>> 2b6d889b27c55d0942364556a03d1bd078bdfad1
+
+
+
+
+
+
+    // Comment below pasted by DJ..possible solutions for "null" displaying on HTML page 7/22
+    //if instead a If/Then statement or Math.max.apply method may return back only the objects we need for ingredients instead of null
+    //have a few methods that we can try below
+    // Instead of returning null when the argument is missing, you could either return a default object:
+
+    //             function greetObject(who) {
+    //             if (!who) {
+    //                 who = 'Stranger';
+    //             }
+    //             return { message: `Hello, ${who}!` };
+    //             }
+    //             greetObject('Eric'); // => { message: 'Hello, Eric!' }
+    //             greetObject();       // => { message: 'Hello, Stranger!' }
+    //             }
+
+
+            //     Your first call to document.write clears the document, so there is no element to find.
+
+            //     Either read the value before calling document.write:
+            //     function clicked()
+            //     {
+            //         var a = document.getElementById("number").value;
+            //         document.write("submit clicked");
+            //         document.write(a);
+            //     }
+            //     or display the output in some other way - eg: in the developer console[^]:
+            //     function clicked()
+            //     {
+            //         console.log("submit clicked");
+            //         var a = document.getElementById("number").value;
+            //         console.log(a);
+            //     }
+            // 
 }
