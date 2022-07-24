@@ -158,6 +158,10 @@ function addToList() {
     groceryListEl.innerHTML = groceryListEl.innerHTML + ingredientArray;
 }
 
+groceryListEl.addEventListener('dblclick', function(event) {
+  event.target.remove();
+});
+
 // this is connected to the save button in HTML and will save the ingredients on grocery list to local storage 
 function saveList() {
     localStorage.setItem("ingredient", JSON.stringify(groceryListEl.innerHTML));  
