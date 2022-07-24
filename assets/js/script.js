@@ -157,3 +157,17 @@ ingredientListEl.addEventListener('dblclick', function(event) {
 function addToList() {
     groceryListEl.innerHTML = groceryListEl.innerHTML + ingredientArray;
 }
+
+// this is connected to the save button in HTML and will save the ingredients on grocery list to local storage 
+function saveList() {
+    localStorage.setItem("ingredient", JSON.stringify(groceryListEl.innerHTML));  
+
+}
+
+// this will load the ingredients in local storage 
+function loadList() {
+    groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
+}
+
+// will be called when page loads
+loadList();
