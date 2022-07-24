@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Brainy Recipes</title>
   </head>
@@ -14,7 +23,12 @@
     <header>
       <nav class="cyan">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center"><i id="header-icon" class="material-icons">local_dining</i> Brainy Recipes</a>
+          <a href="#" class="brand-logo center flow-text"
+            ><i id="header-icon" class="material-icons flow-text"
+              >local_dining</i
+            >
+            Brainy Recipes</a
+          >
         </div>
       </nav>
     </header>
@@ -23,40 +37,60 @@
         <div id="search-area" class="col s12 center grey lighten-4">
           <div class="container">
             <div class="row">
-              <input type="text" id="search" placeholder="Search" class="col s12 m6 offset-m3">
+              <input
+                type="text"
+                id="search"
+                placeholder="Search"
+                class="col s12 m6 offset-m3"
+              />
             </div>
             <div class="row">
-              <!-- adding click function to button whihc will later be uses to display recipe -->
-              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Recipe</button>
-              <button onclick="generateCocktail(document.getElementById('search').value.trim())" id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2">Cocktail</button>
+              <!-- adding click function to button which will later be uses to display recipe -->
+              <button
+                onclick="generateRecipe(document.getElementById('search').value.trim())"
+                id="recipeBtn"
+                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
+              >
+                Recipe
+              </button>
+              <button
+                onclick="generateCocktail(document.getElementById('search').value.trim())"
+                id="cocktailBtn"
+                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
+              >
+                Cocktail
+              </button>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div id="content-area" class="col s12 m12 l8">
-            <div class="row center">
-              <h3 id="title" class="center">Recipe Title</h3>
-            </div>
-            <div class="row">
-                <div class="col s12 m12 l12 offset-l2" id="instructions-area">
-                <div class="row s12 m12 l10 center">
-                  <img id="image" class="responsive-img center" src="">
-                </div>
-                <!--<h4 class="flow-text center section-title">Instructions</h4>-->
-                <ol id="recipe-steps"></ol>
-                  <p id="recipe-summary"></p>
+          <div class="row center">
+            <h3 id="title" class="center">Recipe Title</h3>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12 offset-l2" id="instructions-area">
+              <div class="row s12 m12 l10 center">
+                <img id="image" class="responsive-img center" src="" />
               </div>
-            </div> 
+              <!--<h4 class="flow-text center section-title">Instructions</h4>-->
+              <ol id="recipe-steps"></ol>
+              <p id="recipe-summary"></p>
+              <a href="" id="sourceLink" target="_blank" style="color: red"
+                >Click Here For Full Recipe</a
+              >
+            </div>
           </div>
-          <div class="col s12 m12 l2 teal lighten-3">
-            <h4 class="flow-text center">Ingredient List</h4>
-            <div class="divider"></div>
-            <ul id="ingredient-list" class="center"></ul>
-          </div>
-          <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
-            <h3 class="center flow-text">Grocery List</h3>
-            <div class="divider"></div>
+        </div>
+        <div class="col s12 m12 l2 teal lighten-3">
+          <h4 class="flow-text center">Ingredient List</h4>
+          <div class="divider"></div>
+          <ul id="ingredient-list" class="center"></ul>
+        </div>
+        <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
+          <h3 class="center flow-text">Grocery List</h3>
+          <div class="divider"></div>
           <div id="list" class="center">
             <ul id="grocery-list">
               <li>List Item 1</li>
@@ -64,18 +98,25 @@
             </ul>
           </div>
           <div class="btnCenter row">
-            <button id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col s12">Save List</button>
-          </div>          
+            <button
+              id="saveBtn"
+              class="hoverable waves-effect waves-light btn btn-large col s12"
+            >
+              Save List
+            </button>
+          </div>
         </div>
-      </div>             
+      </div>
     </main>
-  <footer class="row section black center">
-    <h4 class="flow-text white-text">Brainy Badgers - &copy; 2022. All Rights Reserved</h4>
-  </footer>  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+    <footer class="row s12 m12 l12 section black center">
+      <h4 id="copyRight" class="flow-text s12 m12 l12 white-text center">
+        Brainy Badgers - &copy; 2022. All Rights Reserved
+      </h4>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
