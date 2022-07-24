@@ -7,7 +7,7 @@
 //If 402 use different API Key
 
 // Active Api Key
-const apiKey = "?apiKey=e70534b658a340b99af654cbac055309";
+const apiKey = "?apiKey=715f411199a4422e9982991f89fdb06a";
 
 var titleEl = document.getElementById("title");
 var imageEl = document.getElementById("image");
@@ -15,6 +15,7 @@ var ingredientListEl = document.getElementById("ingredient-list");
 var recipeStepsEl = document.getElementById("recipe-steps");
 var recipeSummaryEl = document.getElementById("recipe-summary");
 var sourceLinkEl = document.getElementById("sourceLink");
+var groceryListEl = document.getElementById("grocery-list");
 
 var recipeId;
 var recipeArray = [];
@@ -59,45 +60,31 @@ function generateRecipe(query) {
           apiKey,
         success: function (res) {
           ingredientListEl.innerHTML = "";
+          ingredientArray = [];
           for (var i = 0; res.ingredients.length; i++) {
             // creating a list element inside the unordered list and will loop until all ingredient names are listed in DOM
-            ingredientListEl.innerHTML =
-              ingredientListEl.innerHTML +
-              "<li>" +
-              res.ingredients[i].amount.us.value +
-              " " +
-              res.ingredients[i].amount.us.unit +
-              " - " +
-              res.ingredients[i].name +
-              "</li>";
-          }
+            ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].amount.us.value + " " + res.ingredients[i].amount.us.unit + " - " + res.ingredients[i].name + "</li>";
+            // adding the ingredient list generated to the aary to later add to button
+            ingredientArray = ingredientArray + "<li>" + res.ingredients[i].name + " </li>";
+        }
         },
       });
-
       generateSteps();
     },
   });
 }
 
+// displays the steps for the recipe to the DOM
 function generateSteps() {
   // clears out previous steps
   recipeStepsEl.innerHTML = "";
 
-  var apiUrl =
-    "https://api.spoonacular.com/recipes/" +
-    recipeId +
-    "/analyzedInstructions" +
-    apiKey;
-  fetch(apiUrl)
-    .then(function (response) {
+  var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + apiKey;
+  fetch(apiUrl).then(function (response) {
       if (response.ok) {
         return response.json().then(function (data) {
           for (var i = 0; i < data[0].steps.length; i++) {
-            recipeStepsEl.innerHTML =
-              recipeStepsEl.innerHTML +
-              "<li>" +
-              data[0].steps[i].step +
-              "</li>";
+            recipeStepsEl.innerHTML = recipeStepsEl.innerHTML + "<li>" + data[0].steps[i].step + "</li>";
           }
         });
       } else {
@@ -124,6 +111,7 @@ function generateCocktail(query) {
 
       // Clears ingredients list in case multiple searches
       ingredientListEl.innerHTML = "";
+      ingredientArray = [];
 
       // For loop to print ingredients and servings of each. The eval method evaluates any string as if you were coding it as regular code
       for (var i = 1; i < 16; i++) {
@@ -141,19 +129,14 @@ function generateCocktail(query) {
         );
 
         if (drinkMeasure !== null && drinkIngredient !== null) {
-          ingredientListEl.innerHTML =
-            ingredientListEl.innerHTML +
-            "<li>" +
-            drinkMeasure +
-            " - " +
-            drinkIngredient +
-            "</li>";
+          ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + " - " + drinkIngredient + "</li>";
+          ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
         } else if (drinkMeasure == "null" && drinkIngredient !== "null") {
-          ingredientListEl.innerHTML =
-            ingredientListEl.innerHTML + "<li>" + drinkIngredient + "</li>";
+          ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkIngredient + "</li>";
+          ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
         } else if (drinkMeasure !== "null" && drinkIngredient == "null") {
-          ingredientListEl.innerHTML =
-            ingredientListEl.innerHTML + "<li>" + drinkMeasure + "</li>";
+          ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + "</li>";
+          ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
         }
       }
 
@@ -175,3 +158,27 @@ function generateCocktail(query) {
 
 
         
+ingredientListEl.addEventListener('dblclick', function(event) {
+  var focusedIngredient = event.target.innerHTML;
+  focusedIngredient = focusedIngredient.substring(focusedIngredient.indexOf('-') + 1).trim();
+  groceryListEl.innerHTML = groceryListEl.innerHTML + '<li>' + focusedIngredient + '</li>';
+});
+
+// this will add all the ingredients to the grocery list section
+function addToList() {
+    groceryListEl.innerHTML = groceryListEl.innerHTML + ingredientArray;
+}
+
+// this is connected to the save button in HTML and will save the ingredients on grocery list to local storage 
+function saveList() {
+    localStorage.setItem("ingredient", JSON.stringify(groceryListEl.innerHTML));  
+
+}
+
+// this will load the ingredients in local storage 
+function loadList() {
+    groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
+}
+
+// will be called when page loads
+loadList();
