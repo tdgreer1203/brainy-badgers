@@ -60,10 +60,13 @@ function generateRecipe(query) {
           apiKey,
         success: function (res) {
           ingredientListEl.innerHTML = "";
+          ingredientArray = [];
           for (var i = 0; res.ingredients.length; i++) {
             // creating a list element inside the unordered list and will loop until all ingredient names are listed in DOM
             ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].amount.us.value + " " + res.ingredients[i].amount.us.unit + " - " + res.ingredients[i].name + "</li>";
-          }
+            // adding the ingredient list generated to the aary to later add to button
+            ingredientArray = ingredientArray + "<li>" + res.ingredients[i].name + " </li>";
+        }
         },
       });
       generateSteps();
@@ -71,6 +74,7 @@ function generateRecipe(query) {
   });
 }
 
+// displays the steps for the recipe to the DOM
 function generateSteps() {
   // clears out previous steps
   recipeStepsEl.innerHTML = "";
@@ -107,6 +111,7 @@ function generateCocktail(query) {
 
       // Clears ingredients list in case multiple searches
       ingredientListEl.innerHTML = "";
+      ingredientArray = [];
 
       // For loop to print ingredients and servings of each. The eval method evaluates any string as if you were coding it as regular code
       for (var i = 1; i < 16; i++) {
@@ -125,10 +130,13 @@ function generateCocktail(query) {
 
         if (drinkMeasure !== null && drinkIngredient !== null) {
           ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + " - " + drinkIngredient + "</li>";
+          ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
         } else if (drinkMeasure == "null" && drinkIngredient !== "null") {
           ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkIngredient + "</li>";
+          ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
         } else if (drinkMeasure !== "null" && drinkIngredient == "null") {
           ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + "</li>";
+          ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
         }
       }
 
@@ -144,3 +152,8 @@ ingredientListEl.addEventListener('dblclick', function(event) {
   focusedIngredient = focusedIngredient.substring(focusedIngredient.indexOf('-') + 1).trim();
   groceryListEl.innerHTML = groceryListEl.innerHTML + '<li>' + focusedIngredient + '</li>';
 });
+
+// this will add all the ingredients to the grocery list section
+function addToList() {
+    groceryListEl.innerHTML = groceryListEl.innerHTML + ingredientArray;
+}
