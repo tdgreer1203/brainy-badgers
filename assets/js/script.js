@@ -163,3 +163,15 @@ function generateCocktail(query) {
     },
   });
 }
+
+  // Used with jQuery first part of the function initializes modal with button trigger from HTML
+
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+  // getInstance() is called factory method. It is used for singleton class creation. 
+  // That means only one instance of that class will be created and others will get reference of that class
+  var instance = M.Modal.getInstance('#modal1');
+
+
+        
