@@ -8,11 +8,7 @@
 //If 402 use different API Key
 
 // Active Api Key
-<<<<<<< HEAD
-const apiKey = "?apiKey=9f08ff1455114bd9abf01292e7f973bc";
-=======
 const apiKey = "?apiKey=2831de2f06594a778a430bad8ab00cba";
->>>>>>> jorgedevelop
 
 var titleEl = document.getElementById("title");
 var imageEl = document.getElementById("image");
@@ -51,12 +47,7 @@ function generateRecipe(query) {
 
         // this will show an alert if the user input does not generate any results
       if (runRec === 0){
-<<<<<<< HEAD
-        window.alert("No recipe could be generated from your input. Please try again! Suggestions: Chicken, Cake, Appetizer." )
-        
-=======
         toggleModal();
->>>>>>> jorgedevelop
         // clears the input field
         inputFieldEl.value = '';
       } 
@@ -133,12 +124,7 @@ function generateCocktail(query) {
       var runCockt = res.drinks;
 
       if (runCockt === null) {
-<<<<<<< HEAD
-        window.alert("No cocktail could be generated from your input. Please try again! Suggestions: Gin, Vodka, Rum.")
-
-=======
         toggleModal();
->>>>>>> jorgedevelop
         inputFieldEl.value = '';
       }
 
@@ -204,20 +190,13 @@ groceryListEl.addEventListener('dblclick', function(event) {
   });
 
 // this will add all the ingredients to the grocery list section
-<<<<<<< HEAD
-function addToList() {
-=======
 function addToList(event) {
->>>>>>> jorgedevelop
     groceryListEl.innerHTML = groceryListEl.innerHTML + ingredientArray;
 }
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> jorgedevelop
 // this is connected to the save button in HTML and will save the ingredients on grocery list to local storage 
 function saveList() {
     localStorage.setItem("ingredient", JSON.stringify(groceryListEl.innerHTML));  
@@ -245,8 +224,6 @@ function loadList() {
     groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
 }
 
-<<<<<<< HEAD
-=======
 // reads modal information
 $(document).ready(function(){
     $('.modal').modal();
@@ -258,6 +235,5 @@ function toggleModal(){
     instance.open();
 }
 
->>>>>>> jorgedevelop
 // will be called when page loads
 loadList();

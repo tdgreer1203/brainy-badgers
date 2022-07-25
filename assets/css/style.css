@@ -82,57 +82,6 @@
     justify-content: space-evenly;
   }
 
-<<<<<<< HEAD
-  
-  @media only screen and (max-width: 992px) {
-    .row {
-      margin: 0;
-      display: block;
-    }
-  
-    #header-icon {
-      display: none;
-    }
-  
-    #search-area {
-      height: auto;
-    }
-  
-    #content-section {
-      height: auto;
-    }
-  
-    #recipeBtn {
-      margin-bottom: 10px;
-    }
-  
-    #cocktailBtn {
-      margin-left: 0;
-      margin-bottom: 10px;
-    }
-  
-    #sideBar {
-      height: auto;
-      border: none;
-    }
-  
-    #list {
-      height: auto;
-    }
-  
-    #instructions-area {
-      border-bottom: 3px solid black;
-    }
-  
-    #add-to-list-btn {
-      margin: 10px 0 60px 0;
-    }
-  
-    #back-btn {
-      margin-bottom: 25px;
-    }
-  }
-=======
   #modal-heading {
     font-size: 50px;
     margin-bottom: 5px;
@@ -206,5 +155,4 @@
     }
   }
   
->>>>>>> jorgedevelop
   
