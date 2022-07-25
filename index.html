@@ -24,96 +24,102 @@
       <nav class="cyan">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center flow-text"
-            ><i id="header-icon" class="material-icons flow-text"
-              >local_dining</i
-            >
-            Brainy Recipes</a
-          >
+            ><i id="header-icon" class="material-icons flow-text">local_dining</i>Brainy Recipes</a>
         </div>
       </nav>
     </header>
+
     <main>
-      <div class="row">
-        <div id="search-area" class="col s12 center grey lighten-4">
-          <div class="container">
-            <div class="row">
-              <input
-                type="text"
-                id="search"
-                placeholder="Search"
-                class="col s12 m6 offset-m3"
-              />
+      <!-- start of hero jumbotron -->
+      <div class="row s12 m12 l12 center">
+        <div id="search-area" class="col row s12 m12 l12 center grey lighten-4">
+          <div class="container s12 m12 l12 center">
+            <div class="row s12 m12 l12 center">
+              <input type="text" id="search" placeholder="Search" class="col s12 m12 l8 offset-l1 center"/>
             </div>
+
             <div class="row">
-              <!-- adding click function to button which will later be uses to display recipe -->
-              <button
-                onclick="generateRecipe(document.getElementById('search').value.trim())"
-                id="recipeBtn"
-                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
-              >
-                Recipe
-              </button>
-              <button
-                onclick="generateCocktail(document.getElementById('search').value.trim())"
-                id="cocktailBtn"
-                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
-              >
-                Cocktail
-              </button>
+              <!-- adding click function to button which will later be used to display recipe -->
+              <button onclick="generateRecipe(document.getElementById('search').value.trim())" id="recipeBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m5 l4 offset-m1 offset-l1">Recipe</button>
+              <button onclick="generateCocktail(document.getElementById('search').value.trim())" id="cocktailBtn" class="hoverable waves-effect waves-light btn btn-large col s12 m5 l4 offset-l1">Cocktail</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+
+      <!-- this area will hold the generated recipe and two list -->
+      <section class="row">
         <div id="content-area" class="col s12 m12 l8">
+          
           <div class="row center">
-            <h3 id="title" class="center">Recipe Title</h3>
+            <h3 id="title" class="center">Blackened Cajun Chicken</h3>
           </div>
+
           <div class="row">
             <div class="col s12 m12 l12 offset-l2" id="instructions-area">
               <div class="row s12 m12 l10 center">
-                <img id="image" class="responsive-img center" src="" />
+                <img id="image" class="responsive-img center" src="https://spoonacular.com/recipeImages/Blackened-Cajun-Chicken-635263.jpg" />
               </div>
               <!--<h4 class="flow-text center section-title">Instructions</h4>-->
               <ol id="recipe-steps"></ol>
-              <p id="recipe-summary"></p>
-              <a href="" id="sourceLink" target="_blank" style="color: red"
-                >Click Here For Full Recipe</a
-              >
+              <p id="recipe-summary">Blackened Cajun Chicken might be just the <b>Cajun</b> recipe you are searching for. This recipe serves 4 and costs $1.68 per serving. Watching your figure? This gluten free and dairy free recipe has <b>444 calories</b>, <b>37g of protein</b>, and <b>30g of fat</b> per serving. 
+                This recipe from Foodista requires ground cumin, mustard, brown sugar, and cayenne pepper. 5 people were glad they tried this recipe. It works well as a main course. From preparation to the plate, this recipe takes around <b>45 minutes</b>. Taking all factors into account, 
+                this recipe <b>earns a spoonacular score of 51%</b>, which is solid.</p>
+              <a href="https://spoonacular.com/blackened-cajun-chicken-635263" id="sourceLink" target="_blank" style="color: teal">Click Here For Full Recipe</a>
             </div>
           </div>
         </div>
+
+        <!-- start of ingredient list -->
         <div class="col s12 m12 l2 teal lighten-3">
           <h4 class="flow-text center">Ingredient List</h4>
           <div class="divider"></div>
-          <ul id="ingredient-list" class="center"></ul>
+
+          <ul id="ingredient-list" class="center">
+            <li>1 tsp - bay leaves</li> <li> 0.75 tsps - black pepper</li> <li>1 Tbsp - brown sugar</li> <li>1 tsp - cayenne pepper</li> <li>1 tsp - dried rosemary</li> <li>0.5 tsps - dried thyme</li> 
+            <li>1 Tbsp - dry mustard</li> <li>1 tsp - garlic powder</li> <li>1 tsp - ground cumin</li> <li>1 tsp - onion powder</li> <li>1 Tbsp - paprika</li> <li>2.5 tsps - salt</li> <li>chicken</li>
+          </ul> 
+          <div class="btnCenter row addAllButton">
+            <button id="addGroceryList" onclick="addToList()" class="hoverable waves-effect waves-light btn btn-large col s12">Add All To Grocery List</button>
+          </div>
         </div>
+
+        <!-- start of grocery list -->
         <div id="sideBar" class="col s12 m12 l2 cyan lighten-3">
           <h3 class="center flow-text">Grocery List</h3>
           <div class="divider"></div>
+          
           <div id="list" class="center">
-            <ul id="grocery-list"></ul>
+            <div> <ul id="grocery-list" class="center"></ul> </div>
           </div>
-          <div class="btnCenter row">
-            <button
-              id="saveBtn"
-              class="hoverable waves-effect waves-light btn btn-large col s12"
-            >
+
+          <div class="btnCenter row groceryButton">
+            <button onclick="saveList()" id="saveBtn" class="hoverable waves-effect waves-light btn btn-large col s12">
               Save List
+            </button>
+
+            <button onclick="deleteList()" id="deletBtn" class="hoverable waves-effect waves-light btn btn-large col s12">
+              Delete List
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </main>
+
+    <!-- start of fotter section -->
     <footer class="row s12 m12 l12 section black center">
       <h4 id="copyRight" class="flow-text s12 m12 l12 white-text center">
         Brainy Badgers - &copy; 2022. All Rights Reserved
       </h4>
     </footer>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+
   </body>
+  
 </html>
