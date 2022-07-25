@@ -207,6 +207,16 @@ function deleteList() {
     localStorage.clear();
 }
 
+function printPageArea() {
+    var printSection = document.getElementById('grocery-list');
+    var windPrint = window.open('', '', 'width=900,height=650');
+    windPrint.document.write(printSection.innerHTML);
+    windPrint.document.close();
+    windPrint.focus();
+    windPrint.print();
+    windPrint.close();
+}
+
 // this will load the ingredients in local storage 
 function loadList() {
     groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
@@ -214,4 +224,3 @@ function loadList() {
 
 // will be called when page loads
 loadList();
-
