@@ -180,7 +180,6 @@ function generateCocktail(query) {
     },
   });
 }
-<<<<<<< HEAD
 
   // Used with jQuery first part of the function initializes modal with button trigger from HTML
 
@@ -194,9 +193,8 @@ function generateCocktail(query) {
 
 
         
-=======
+
 //  if you dbl click on the ingredient 
->>>>>>> d99ee9b9114100e68259f7ffa1ad2c3753b9dcd4
 ingredientListEl.addEventListener('dblclick', function(event) {
   var focusedIngredient = event.target.innerHTML;
   focusedIngredient = focusedIngredient.substring(focusedIngredient.indexOf('-') + 1).trim();
@@ -241,6 +239,16 @@ function printPageArea() {
 function loadList() {
     groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
 }
+
+// initializes modal
+$(document).ready(function(){
+    
+    // Here specify your content or message, enclose between <p>
+    var content = '<div class="modal-content"><p>my content</p></div>';
+    
+    $('.modal').append(content);
+    $('.modal').modal();
+});
 
 // will be called when page loads
 loadList();
