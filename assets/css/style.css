@@ -131,4 +131,39 @@
       margin-bottom: 25px;
     }
   }
+.modal-header {
+  padding: 2px 16px;
+  background-color: #00BCD4;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 10px 0;
+  background-color: #00BCD4;
+  color: white;
+  text-align: center;
+}
+
+.modal-content {
+  position: absolute;
+  z-index: 2;
+  top: 30%;
+  left: 30%;
+  background-color: #fefefe;
+  display: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
   
