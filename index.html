@@ -33,15 +33,15 @@
       </nav>
     </header>
     <main>
-      <div class="row">
-        <div id="search-area" class="col s12 center grey lighten-4">
-          <div class="container">
-            <div class="row">
+      <div class="row s12 m12 l12 center">
+        <div id="search-area" class="col row s12 m12 l12 center grey lighten-4">
+          <div class="container s12 m12 l12 center">
+            <div class="row s12 m12 l12 center">
               <input
                 type="text"
                 id="search"
                 placeholder="Search"
-                class="col s12 m6 offset-m3"
+                class="col s12 m12 l8 offset-l1 center"
               />
             </div>
             <div class="row">
@@ -49,14 +49,14 @@
               <button
                 onclick="generateRecipe(document.getElementById('search').value.trim())"
                 id="recipeBtn"
-                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
+                class="hoverable waves-effect waves-light btn btn-large col s12 m5 l4 offset-m1 offset-l1"
               >
                 Recipe
               </button>
               <button
                 onclick="generateCocktail(document.getElementById('search').value.trim())"
                 id="cocktailBtn"
-                class="hoverable waves-effect waves-light btn btn-large col s12 m4 offset-m2"
+                class="hoverable waves-effect waves-light btn btn-large col s12 m5 l4 offset-l1"
               >
                 Cocktail
               </button>
@@ -90,7 +90,7 @@
           <div class="btnCenter row recAddButton">
             <button id="addGroceryList" onclick="addToList()"
             class="hoverable waves-effect waves-light btn btn-large col s12">
-            Add to Grocery List
+            Add All To Grocery List
             </button>
           </div>
         </div>
@@ -104,10 +104,18 @@
           </div>
           <div class="btnCenter row">
             <button
+              onclick="saveList()"
               id="saveBtn"
               class="hoverable waves-effect waves-light btn btn-large col s12"
             >
               Save List
+            </button>
+            <button
+              onclick="deleteList()"
+              id="deletBtn"
+              class="hoverable waves-effect waves-light btn btn-large col s12"
+            >
+              Delete List
             </button>
           </div>
         </div>
