@@ -263,6 +263,17 @@ $(document).ready(function(){
 
 
 
+// reads modal information
+$(document).ready(function(){
+    $('.modal').modal();
+})
+
+// when called will display modal to DOM
+function toggleModal(){
+    var instance= M.Modal.getInstance($('#modal1'))
+    instance.open();
+}
+
 // will be called when page loads
 loadList();
 
