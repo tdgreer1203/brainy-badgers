@@ -7,7 +7,7 @@
 //If 402 use different API Key
 
 // Active Api Key
-const apiKey = "?apiKey=715f411199a4422e9982991f89fdb06a";
+const apiKey = "?apiKey=9f08ff1455114bd9abf01292e7f973bc";
 
 var titleEl = document.getElementById("title");
 var imageEl = document.getElementById("image");
@@ -68,6 +68,10 @@ function generateRecipe(query) {
             ingredientArray = ingredientArray + "<li>" + res.ingredients[i].name + " </li>";
         }
         },
+        error: function(res) {
+            if(titleEl.innerHTML = res.results[randomRecNum].title = '')
+            alert("Not a Valid Response")
+        }
       });
       generateSteps();
     },
@@ -149,12 +153,13 @@ function generateCocktail(query) {
 
   // Used with jQuery first part of the function initializes modal with button trigger from HTML
 
-  $(document).ready(function(){
-    $('.modal').modal();
-  });
+//   $(document).ready(function(){
+//     $('.modal').modal();
+//     var instance = M.Modal.getInstance('#modal1');
+//     instance.open()
+//   });
   // getInstance() is called factory method. It is used for singleton class creation. 
   // That means only one instance of that class will be created and others will get reference of that class
-  var instance = M.Modal.getInstance('#modal1');
 
 
         
