@@ -177,17 +177,37 @@ nav {
   }
   
   #recipe-btn {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   #cocktail-btn {
     margin-left: 0;
     margin-bottom: 10px;
   }
+
+  #ingredient-bar {
+    border: none;
+  }
   
   #grocery-bar {
     height: auto;
     border: none;
+  }
+
+  #add-all-btn {
+    width: 95%;
+  }
+  
+  #save-btn {
+    width: 95%;
+  }
+  
+  #delete-btn {
+    width: 95%;
+  }
+  
+  #print-btn {
+    width: 95%;
   }
   
   #instructions-area {
