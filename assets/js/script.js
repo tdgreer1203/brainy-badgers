@@ -6,7 +6,7 @@
   9f08ff1455114bd9abf01292e7f973bc
 */
 
-const apiKey = "?apiKey=2831de2f06594a778a430bad8ab00cba";
+const apiKey = "apiKey=2831de2f06594a778a430bad8ab00cba";
 
 var titleEl = document.getElementById("recipe-title");
 var imageEl = document.getElementById("recipe-image");
@@ -38,13 +38,41 @@ function getRandomNum(max) {
   return Math.floor(Math.random() * max);
 }
 
-searchInputEl.addEventListener('input', function(){
-  console.log(searchInputEl.value);
+recipeBtn.addEventListener('click', function() {
+  var searchTerm = searchInputEl.value.trim();
+  if(!searchTerm) {
+    showModal("Please enter an ingredient!", "");
+  } else {
+    getRecipe(searchTerm);
+  }
+  searchInputEl.value = "";
+})
+
+modalClose.addEventListener('click', function() {
+  closeModal();
 });
 
-recipeBtn.addEventListener('click', function() {
-
-})
+function getRecipe(query) {
+  var apiUrl = "https://api.spoonacular.com/recipes/random?number=20&tags=" + query + "&" + apiKey;
+  fetch(apiUrl).then(function (response) {
+      if (response.ok) {
+        return response.json().then(function(data) {
+          var recipeNumber = getRandomNum(data.recipes.length);
+          imageEl.src = data.recipes[recipeNumber].image;
+          titleEl.innerText = data.recipes[recipeNumber].title;
+          recipeSummaryEl.innerHTML = data.recipes[recipeNumber].summary;
+          imageEl.src = data.recipes[recipeNumber].image;
+          
+          console.log(data.recipes[recipeNumber].extendedIngredients[0]);
+        });
+      } else {
+        showModal("Umm...that search term didn't return any recipes. Please try again.", "");
+      }
+    })
+    .catch(function (error) {
+      showModal("Well, this one isn't on us! The service provider's server seems to be down.", error);
+    });
+}
 
 function generateRecipe(query) {
     $.ajax({
@@ -100,7 +128,6 @@ function generateRecipe(query) {
 
 function generateSteps() {
   recipeStepsEl.innerHTML = "";
-
   var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + apiKey;
   fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -224,7 +251,7 @@ function toggleModal(){
 }
 
 function showModal(message, error) {
-  customMessageEl.innerHTML = message;
+  customMessageEl.textContent = message;
   errorMessageEl.innerHTML = error;
   myModal.style.display = "block";
 }

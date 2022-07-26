@@ -26,9 +26,6 @@
             <div class="row s12 m12 l12 center">
               <input type="text" id="search-input" placeholder="Search" class="col s12 m12 l8 offset-l1 center"/>
             </div>
-            <div class="row s12 m12 l12">
-              <ul id="ac-list"></ul>
-            </div>
             <div class="row">
               <button id="recipe-btn" class="hoverable waves-effect btn btn-large col s12 m5 l4 offset-m1 offset-l1">Recipe</button>
               <button id="cocktail-btn" class="hoverable waves-effect btn btn-large col s12 m5 l4 offset-l1">Cocktail</button>
@@ -36,17 +33,29 @@
           </div>
         </div>
       </section>
-      
+      <!----------------------------MODAL-------------------------------------->
+      <div class="modal-content" id="modal">
+        <div class="modal-header">
+          <h4>Oh No!</h4>
+        </div>
+        <div class="modal-body">
+          <p id="custom-message"></p>
+          <p id="error-message"></p>
+        </div>
+        <div class="modal-footer">
+          <button id="modal-close" class="hoverable waves-effect waves-light btn center">Close</button>
+        </div>
+      </div>
       <section class="row">
         <!----------------------------RECIPE AREA-------------------------------------->
-        <div id="content-area" class="col s12 m12 l8">
+        <div id="content-area" class="col s12 m12 l12">
           <div class="row center">
             <h3 id="recipe-title" class="center"></h3>
           </div>
           <div class="row">
-            <div class="col s12 m12 l12 offset-l2" id="instructions-area">
-              <div class="row s12 m12 l10 center">
-                <img id="recipe-image" class="responsive-img center" src="" />
+            <div class="col s12 m12 l12" id="instructions-area">
+              <div class="row s12 m12 l12">
+                <img id="recipe-image" class="responsive-img left" src="" />
               </div>
               <ol id="recipe-steps"></ol>
               <p id="recipe-summary"></p>

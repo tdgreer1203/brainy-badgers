@@ -16,6 +16,11 @@ nav {
   background-color: var(--main-color);
 }
 
+.btn:active .btn:focus .btn:link .btn:visited {
+  background-color: var(--secondary-color);
+  color: black;
+}
+
 .btn:hover {
   background-color: var(--tertiary-color);
 }
@@ -29,16 +34,15 @@ nav {
   margin-bottom: 0;
 }
 
-#ac-list {
-  position: relative;
-  display: none;
-  max-height: 100px;
-  height: 100px;
+#recipe-steps {
+  margin: 0 auto;
+}
+
+#recipe-summary {
   font-size: 18px;
-  background-color: white;
-  margin-top: 0;
-  padding: 10px 25px;
-  width: 80%;
+  max-width: 70%;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
   
 ::placeholder {
@@ -67,6 +71,9 @@ nav {
   
 #recipe-image {
   max-height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
   
 .section-title {
@@ -161,7 +168,7 @@ nav {
 .modal-content {
   position: absolute;
   z-index: 2;
-  top: 30%;
+  top: 10%;
   left: 30%;
   background-color: #fefefe;
   display: none;
@@ -171,12 +178,16 @@ nav {
   width: 40%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
-  animation-duration: 0.7s
+  animation-duration: 1s
+}
+
+.modal-body {
+  font-size: 20px;
 }
 
 @keyframes animatetop {
-  from {top: -500px; opacity: 0}
-  to {top: 0; opacity: 1}
+  from {opacity: 0}
+  to {opacity: 1}
 }
 
 @media only screen and (max-width: 992px) {
