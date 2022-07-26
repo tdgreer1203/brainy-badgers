@@ -16,7 +16,7 @@ var recipeSummaryEl = document.getElementById("recipe-summary");
 var ingredientListEl = document.getElementById("ingredient-list");
 var groceryListEl = document.getElementById("grocery-list");
 
-var inputFieldEl = document.getElementById("search-input");
+var searchInputEl = document.getElementById("search-input");
 var recipeBtn = document.getElementById("recipe-btn");
 var cocktailBtn = document.getElementById("cocktail-btn");
 var addAllBtn = document.getElementById("add-all-btn");
@@ -29,15 +29,22 @@ var modalClose = document.getElementById("modal-close");
 var customMessageEl = document.getElementById("custom-message");
 var errorMessageEl = document.getElementById("error-message");
 
-var runRec;
-var runCockt;
+var ingredientId;
 var recipeId;
-var ingredientArray = [];
+var ingredientList = [];
 var groceryList = [];
 
 function getRandomNum(max) {
   return Math.floor(Math.random() * max);
 }
+
+searchInputEl.addEventListener('input', function(){
+  console.log(searchInputEl.value);
+});
+
+recipeBtn.addEventListener('click', function() {
+
+})
 
 function generateRecipe(query) {
     $.ajax({
