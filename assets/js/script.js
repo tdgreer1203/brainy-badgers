@@ -32,7 +32,6 @@ var customMessageEl = document.getElementById("custom-message");
 var errorMessageEl = document.getElementById("error-message");
 
 var ingredientList = [];
-var groceryList = [];
 var stepsList = [];
 
 function getRandomNum(max) {
@@ -69,6 +68,34 @@ modalClose.addEventListener('click', function() {
 cocktailBtn.addEventListener('click', function() {
   var query = analyzeInput();
   getCocktail(query);
+});
+
+addAllBtn.addEventListener('click', function() {
+  var listItems = ingredientListEl.getElementsByTagName('li');
+  for(var i = 0; i < listItems.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = listItems[i].firstChild.textContent;
+    groceryListEl.appendChild(li);
+  }
+});
+
+deleteBtn.addEventListener('click', function() {
+  groceryListEl.innerHTML = "";
+  localStorage.removeItem("grocery-list");
+});
+
+saveBtn.addEventListener('click', function() {
+  saveGroceryList();
+});
+
+printBtn.addEventListener('click', function(){
+  var printSection = document.getElementById('grocery-list');
+    var windPrint = window.open('', '', 'width=900,height=650');
+    windPrint.document.write(printSection.innerHTML);
+    windPrint.document.close();
+    windPrint.focus();
+    windPrint.print();
+    windPrint.close();
 });
 
 function getRecipe(query) {
@@ -172,51 +199,36 @@ ingredientListEl.addEventListener('dblclick', function(event) {
   var li = document.createElement('li');
   li.textContent = focusedIngredient;
   groceryListEl.appendChild(li);
+  saveGroceryList();
 });
 
 groceryListEl.addEventListener('dblclick', function(event) {
     event.target.remove();
     localStorage.removeItem("name")
-});
-
-addAllBtn.addEventListener('click', function() {
-  var listItems = ingredientListEl.getElementsByTagName('li');
-  for(var i = 0; i < listItems.length; i++) {
-    var li = document.createElement('li');
-    li.textContent = listItems[i].firstChild.textContent;
-    groceryListEl.appendChild(li);
-  }
-});
-
-deleteBtn.addEventListener('click', function() {
-  groceryListEl.innerHTML = "";
-  localStorage.removeItem("grocery-list");
-});
-
-saveBtn.addEventListener('click', function() {
-  saveGroceryList();
+    saveGroceryList();
 });
 
 function saveGroceryList() {
   var list = groceryListEl.getElementsByTagName('li');
+  var saveArray = [];
   for(var i = 0; i < list.length; i++) {
-    groceryList.push(list[i].textContent);
+    saveArray.push(list[i].textContent);
   }
-  localStorage.setItem("grocery-list", JSON.stringify(list));
-}
-
-function printPageArea() {
-    var printSection = document.getElementById('grocery-list');
-    var windPrint = window.open('', '', 'width=900,height=650');
-    windPrint.document.write(printSection.innerHTML);
-    windPrint.document.close();
-    windPrint.focus();
-    windPrint.print();
-    windPrint.close();
+  localStorage.setItem("grocery-list", JSON.stringify(saveArray));
 }
 
 function loadList() {
-    groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
+  var loadArray = localStorage.getItem('grocery-list');
+    if(!loadArray) {
+      groceryListEl.innerHTML = "";
+    } else {
+      loadArray = JSON.parse(loadArray);
+      for(var i = 0; i < loadArray.length; i++) {
+        var li = document.createElement('li');
+        li.textContent = loadArray[i];
+        groceryListEl.appendChild(li);
+      }
+    }
 }
 
 function showModal(message) {
@@ -225,6 +237,5 @@ function showModal(message) {
   myModal.style.display = "block";
   prevenDefault();
 }
-
 
 loadList();
