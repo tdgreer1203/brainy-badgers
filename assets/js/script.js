@@ -33,6 +33,7 @@ var ingredientId;
 var recipeId;
 var ingredientList = [];
 var groceryList = [];
+var stepsList = [];
 
 function getRandomNum(max) {
   return Math.floor(Math.random() * max);
@@ -58,20 +59,55 @@ function getRecipe(query) {
       if (response.ok) {
         return response.json().then(function(data) {
           var recipeNumber = getRandomNum(data.recipes.length);
+          console.log(data.recipes[recipeNumber]);
           imageEl.src = data.recipes[recipeNumber].image;
           titleEl.innerText = data.recipes[recipeNumber].title;
           recipeSummaryEl.innerHTML = data.recipes[recipeNumber].summary;
           imageEl.src = data.recipes[recipeNumber].image;
-          
-          console.log(data.recipes[recipeNumber].extendedIngredients[0]);
+          for(var i = 0; i < data.recipes[recipeNumber].extendedIngredients.length; i++) {
+            var ingredient = {
+              id: data.recipes[recipeNumber].extendedIngredients[i].id,
+              image: data.recipes[recipeNumber].extendedIngredients[i].image,
+              name: data.recipes[recipeNumber].extendedIngredients[i].nameClean,
+              amount: data.recipes[recipeNumber].extendedIngredients[i].amount,
+              unit: data.recipes[recipeNumber].extendedIngredients[i].unit
+            }
+            ingredientList.push(ingredient);
+          } 
+          //Fix this for loop
+          for(var i = 0; i < data.recipes[recipeNumber].analyzedInstructions.length; i++) {
+              console.log(data.recipes[recipeNumber].analyzedInstructions.steps[i].step);
+          }
+          populateIngredients();
+          //populateSteps();
         });
       } else {
         showModal("Umm...that search term didn't return any recipes. Please try again.", "");
       }
     })
     .catch(function (error) {
-      showModal("Well, this one isn't on us! The service provider's server seems to be down.", error);
+      showModal("Yikes! Not sure what's going on, but there was a problem with the request.", error);
     });
+}
+
+function populateIngredients() {
+  for(var i = 0; i < ingredientList.length; i++) {
+    var li = document.createElement('li');
+    var span = document.createElement('span');
+    li.textContent = ingredientList[i].name;
+    span.textContent = "(" + ingredientList[i].amount;
+    if(ingredientList[i].unit) {
+      span.textContent = span.textContent + " - " + ingredientList[i].unit + ")";
+    } else {
+      span.textContent = span.textContent + ")";
+    }
+    li.appendChild(span);
+    ingredientListEl.appendChild(li);
+  }
+} 
+
+function populateSteps() {
+
 }
 
 function generateRecipe(query) {
