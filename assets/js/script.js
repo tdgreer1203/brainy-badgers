@@ -10,8 +10,8 @@ const apiKey = "apiKey=2831de2f06594a778a430bad8ab00cba";
 
 var titleEl = document.getElementById("recipe-title");
 var imageEl = document.getElementById("recipe-image");
-var recipeStepsEl = document.getElementById("recipe-steps");
 
+var recipeStepsEl = document.getElementById("recipe-steps");
 var recipeSummaryEl = document.getElementById("recipe-summary");
 var ingredientListEl = document.getElementById("ingredient-list");
 var groceryListEl = document.getElementById("grocery-list");
@@ -29,8 +29,6 @@ var modalClose = document.getElementById("modal-close");
 var customMessageEl = document.getElementById("custom-message");
 var errorMessageEl = document.getElementById("error-message");
 
-var ingredientId;
-var recipeId;
 var ingredientList = [];
 var groceryList = [];
 var stepsList = [];
@@ -39,19 +37,37 @@ function getRandomNum(max) {
   return Math.floor(Math.random() * max);
 }
 
-recipeBtn.addEventListener('click', function() {
+function analyzeInput() {
+  ingredientList = [];
+  stepList = [];
+  titleEl.textContent = "";
+  imageEl.src = "";
+  recipeSummaryEl.textContent = "";
+  ingredientListEl.innerHTML = "";
+  recipeStepsEl.innerHTML = "";
+
   var searchTerm = searchInputEl.value.trim();
   if(!searchTerm) {
     showModal("Please enter an ingredient!", "");
   } else {
-    getRecipe(searchTerm);
+    return searchTerm;
   }
   searchInputEl.value = "";
+}
+
+recipeBtn.addEventListener('click', function() {
+  var query = analyzeInput();
+  getRecipe(query);
 })
 
 modalClose.addEventListener('click', function() {
   closeModal();
 });
+
+cocktailBtn.addEventListener('click', function() {
+  var query = analyzeInput();
+  getCocktail(query);
+})
 
 function getRecipe(query) {
   var apiUrl = "https://api.spoonacular.com/recipes/random?number=20&tags=" + query + "&" + apiKey;
@@ -59,11 +75,9 @@ function getRecipe(query) {
       if (response.ok) {
         return response.json().then(function(data) {
           var recipeNumber = getRandomNum(data.recipes.length);
-          console.log(data.recipes[recipeNumber]);
           imageEl.src = data.recipes[recipeNumber].image;
           titleEl.innerText = data.recipes[recipeNumber].title;
           recipeSummaryEl.innerHTML = data.recipes[recipeNumber].summary;
-          imageEl.src = data.recipes[recipeNumber].image;
           for(var i = 0; i < data.recipes[recipeNumber].extendedIngredients.length; i++) {
             var ingredient = {
               id: data.recipes[recipeNumber].extendedIngredients[i].id,
@@ -74,18 +88,18 @@ function getRecipe(query) {
             }
             ingredientList.push(ingredient);
           } 
-          //Fix this for loop
           for(var i = 0; i < data.recipes[recipeNumber].analyzedInstructions.length; i++) {
-              console.log(data.recipes[recipeNumber].analyzedInstructions.steps[i].step);
+            for(var x = 0; x < data.recipes[recipeNumber].analyzedInstructions[i].steps.length; x++) {
+              stepsList.push(data.recipes[recipeNumber].analyzedInstructions[i].steps[x].step);
+            }
           }
           populateIngredients();
-          //populateSteps();
+          populateSteps();
         });
       } else {
         showModal("Umm...that search term didn't return any recipes. Please try again.", "");
       }
-    })
-    .catch(function (error) {
+    }).catch(function (error) {
       showModal("Yikes! Not sure what's going on, but there was a problem with the request.", error);
     });
 }
@@ -107,126 +121,50 @@ function populateIngredients() {
 } 
 
 function populateSteps() {
-
+  for(var i = 0; i < stepsList.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = stepsList[i];
+    recipeStepsEl.appendChild(li);
+  }
 }
 
-function generateRecipe(query) {
-    $.ajax({
-    url:
-      "https://api.spoonacular.com/recipes/complexSearch" +
-      apiKey +
-      "&number=30&query=" +
-      query +
-      "&addRecipeInformation=true",
-    
-      success: function (res) {
-        var runRec = res.totalResults;
-
-      if (runRec === 0){
-        toggleModal();
-        inputFieldEl.value = '';
-      } 
-      
-      else if (runRec !== 0) {
-      var randomRecNum = getRandomNum(30);
-      titleEl.innerHTML = res.results[randomRecNum].title;
-      imageEl.setAttribute("src", res.results[randomRecNum].image);
-      recipeSummaryEl.innerHTML = res.results[randomRecNum].summary;
-      sourceLinkEl.setAttribute(
-        "href",
-        res.results[randomRecNum].spoonacularSourceUrl
-      );
-
-      recipeId = res.results[randomRecNum].id;
-
-      $.ajax({
-        url:
-          "https://api.spoonacular.com/recipes/" +
-          recipeId +
-          "/ingredientWidget.json" +
-          apiKey,
-        success: function (res) {
-          ingredientListEl.innerHTML = "";
-          ingredientArray = [];
-          for (var i = 0; res.ingredients.length; i++) {
-            ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + res.ingredients[i].amount.us.value + " " + res.ingredients[i].amount.us.unit + " - " + res.ingredients[i].name + "</li>";
-
-            ingredientArray = ingredientArray + "<li>" + res.ingredients[i].name + " </li>";
-        }
-        },
-      });
-      generateSteps();
-      inputFieldEl.value = '';
-     }
-    }
-  });
-}
-
-function generateSteps() {
-  recipeStepsEl.innerHTML = "";
-  var apiUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions" + apiKey;
+function getCocktail(query) {
+  var apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query;
   fetch(apiUrl).then(function (response) {
       if (response.ok) {
-        return response.json().then(function (data) {
-          for (var i = 0; i < data[0].steps.length; i++) {
-            recipeStepsEl.innerHTML = recipeStepsEl.innerHTML + "<li>" + data[0].steps[i].step + "</li>";
+        return response.json().then(function(data) {
+          var recipeNumber = getRandomNum(data.drinks.length);
+          imageEl.src = data.drinks[recipeNumber].strDrinkThumb;
+          titleEl.innerText = data.drinks[recipeNumber].strDrink;
+          recipeSummaryEl.innerHTML = data.drinks[recipeNumber].strInstructions;
+          for(var i = 0; i < 16; i++) {
+            var drinkMeasure = eval("data.drinks[" + recipeNumber.toString() + "].strMeasure" + i.toString() );
+            var drinkIngredient = eval("res.drinks[" + recipeNumber.toString() + "].strIngredient" + i.toString());
           }
-        });
+        }); 
       } else {
-        console.log(error);
+        showModal("Yikes! Not sure what's going on, but there was a problem with the request.", "");
       }
-    })
-    .catch(function (error) {
-      console.log(error);
+  }).catch(function (error) {
+      showModal("Umm...that search term didn't return any recipes. Please try again.", error);
     });
 }
 
 function generateCocktail(query) {
-  $.ajax({
-    url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query,
 
-    success: function (res) {
-      var runCockt = res.drinks;
-
-      if (runCockt === null) {
-        toggleModal();
-        inputFieldEl.value = '';
-      }
-
-
-      else if (runCockt !== null) {
-        var randomCocktNum = getRandomNum(10);
-
-        titleEl.innerHTML = res.drinks[randomCocktNum].strDrink;
-        imageEl.setAttribute("src", res.drinks[randomCocktNum].strDrinkThumb);
-        recipeSummaryEl.innerHTML = res.drinks[randomCocktNum].strInstructions;
-
-        ingredientListEl.innerHTML = "";
-        ingredientArray = [];
 
         for (var i = 1; i < 16; i++) {
-            var drinkMeasure = eval(
-            "res.drinks[" +
-                randomCocktNum.toString() +
-                "].strMeasure" +
-                i.toString()
-            );
-            var drinkIngredient = eval(
-            "res.drinks[" +
-                randomCocktNum.toString() +
-                "].strIngredient" +
-                i.toString()
-            );
+            
 
             if (drinkMeasure !== null && drinkIngredient !== null) {
-            ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + " - " + drinkIngredient + "</li>";
-            ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
+              ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + " - " + drinkIngredient + "</li>";
+              ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
             } else if (drinkMeasure == "null" && drinkIngredient !== "null") {
-            ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkIngredient + "</li>";
-            ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
+              ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkIngredient + "</li>";
+              ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
             } else if (drinkMeasure !== "null" && drinkIngredient == "null") {
-            ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + "</li>";
-            ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
+              ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + "</li>";
+              ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
             }
         }
 

@@ -54,11 +54,14 @@ li span {
 
 #recipe-steps {
   margin: 0 auto;
+  font-size: 18px;
+  max-width: 90%;
+  margin-bottom: 30px;
 }
 
 #recipe-summary {
   font-size: 18px;
-  max-width: 70%;
+  max-width: 90%;
   margin: 0 auto;
   margin-bottom: 50px;
 }
@@ -216,6 +219,14 @@ li span {
   
   #header-icon {
     display: none;
+  }
+
+  #recipe-steps {
+    max-width: 95%;
+  }
+
+  #recipe-summary {
+    max-width: 95%;
   }
   
   #search-area {
