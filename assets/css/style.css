@@ -63,7 +63,14 @@ li span {
   font-size: 18px;
   max-width: 90%;
   margin: 0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+}
+
+#cocktail-summary {
+  font-size: 18px;
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
   
 ::placeholder {
@@ -132,7 +139,7 @@ li span {
 }
 
 #ingredient-list li:hover {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--tertiary-color);
 }
   
@@ -149,6 +156,7 @@ li span {
 #add-all-btn {
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 50px;
 }
 
 #save-btn {
@@ -227,6 +235,11 @@ li span {
 
   #recipe-summary {
     max-width: 95%;
+  }
+
+  #cocktail-summary {
+    max-width: 95%;
+    text-align: center;
   }
   
   #search-area {

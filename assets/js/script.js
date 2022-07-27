@@ -13,6 +13,7 @@ var imageEl = document.getElementById("recipe-image");
 
 var recipeStepsEl = document.getElementById("recipe-steps");
 var recipeSummaryEl = document.getElementById("recipe-summary");
+var cocktailSummaryEl = document.getElementById("cocktail-summary");
 var ingredientListEl = document.getElementById("ingredient-list");
 var groceryListEl = document.getElementById("grocery-list");
 
@@ -23,6 +24,7 @@ var addAllBtn = document.getElementById("add-all-btn");
 var saveBtn = document.getElementById("save-btn");
 var deleteBtn = document.getElementById("delete-btn");
 var printBtn = document.getElementById("print-btn");
+var addAllBtn = document.getElementById("add-all-btn");
 
 var myModal = document.getElementById("modal");
 var modalClose = document.getElementById("modal-close");
@@ -47,27 +49,27 @@ function analyzeInput() {
   recipeStepsEl.innerHTML = "";
 
   var searchTerm = searchInputEl.value.trim();
+  searchInputEl.value = "";
   if(!searchTerm) {
-    showModal("Please enter an ingredient!", "");
+    showModal("Please enter an ingredient!");
   } else {
     return searchTerm;
   }
-  searchInputEl.value = "";
 }
 
 recipeBtn.addEventListener('click', function() {
   var query = analyzeInput();
   getRecipe(query);
-})
+});
 
 modalClose.addEventListener('click', function() {
-  closeModal();
+  myModal.style.display = "none";
 });
 
 cocktailBtn.addEventListener('click', function() {
   var query = analyzeInput();
   getCocktail(query);
-})
+});
 
 function getRecipe(query) {
   var apiUrl = "https://api.spoonacular.com/recipes/random?number=20&tags=" + query + "&" + apiKey;
@@ -97,10 +99,10 @@ function getRecipe(query) {
           populateSteps();
         });
       } else {
-        showModal("Umm...that search term didn't return any recipes. Please try again.", "");
+        showModal("There was a problem with the search. Please try again.");
       }
     }).catch(function (error) {
-      showModal("Yikes! Not sure what's going on, but there was a problem with the request.", error);
+      showModal("There was a problem with the search. Please try again.");
     });
 }
 
@@ -109,6 +111,7 @@ function populateIngredients() {
     var li = document.createElement('li');
     var span = document.createElement('span');
     li.textContent = ingredientList[i].name;
+    li.classList.add = "ingredient";
     span.textContent = "(" + ingredientList[i].amount;
     if(ingredientList[i].unit) {
       span.textContent = span.textContent + " - " + ingredientList[i].unit + ")";
@@ -136,70 +139,75 @@ function getCocktail(query) {
           var recipeNumber = getRandomNum(data.drinks.length);
           imageEl.src = data.drinks[recipeNumber].strDrinkThumb;
           titleEl.innerText = data.drinks[recipeNumber].strDrink;
-          recipeSummaryEl.innerHTML = data.drinks[recipeNumber].strInstructions;
+          cocktailSummaryEl.innerHTML = data.drinks[recipeNumber].strInstructions;
           for(var i = 0; i < 16; i++) {
             var drinkMeasure = eval("data.drinks[" + recipeNumber.toString() + "].strMeasure" + i.toString() );
-            var drinkIngredient = eval("res.drinks[" + recipeNumber.toString() + "].strIngredient" + i.toString());
+            var drinkIngredient = eval("data.drinks[" + recipeNumber.toString() + "].strIngredient" + i.toString());
+            var li = document.createElement('li');
+            li.classList.add = "ingredient";
+            var span = document.createElement('span');
+            if (drinkMeasure !== null && drinkIngredient !== null) {
+              li.textContent = drinkIngredient;
+              span.textContent = drinkMeasure;
+              li.appendChild(span);
+            } else if (drinkMeasure == "null" && drinkIngredient !== "null") {
+              li.textContent = drinkIngredient;
+            } else if (drinkMeasure !== "null" && drinkIngredient == "null") {
+              span.textContent = drinkMeasure;
+              li.appendChild(span);
+            }
+            ingredientListEl.appendChild(li);
           }
         }); 
       } else {
-        showModal("Yikes! Not sure what's going on, but there was a problem with the request.", "");
+        showModal("There was a problem with the search. Please try again.");
       }
   }).catch(function (error) {
-      showModal("Umm...that search term didn't return any recipes. Please try again.", error);
+      showModal("There was a problem with the search. Please try again.");
     });
 }
 
-function generateCocktail(query) {
-
-
-        for (var i = 1; i < 16; i++) {
-            
-
-            if (drinkMeasure !== null && drinkIngredient !== null) {
-              ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + " - " + drinkIngredient + "</li>";
-              ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
-            } else if (drinkMeasure == "null" && drinkIngredient !== "null") {
-              ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkIngredient + "</li>";
-              ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
-            } else if (drinkMeasure !== "null" && drinkIngredient == "null") {
-              ingredientListEl.innerHTML = ingredientListEl.innerHTML + "<li>" + drinkMeasure + "</li>";
-              ingredientArray = ingredientArray +  "<li>" + drinkIngredient + "</li>"
-            }
-        }
-
-        sourceLinkEl.innerHTML = "";
-        recipeStepsEl.innerHTML = "";
-        inputFieldEl.value = "";
-     }
-    },
-  });
-}
-
 ingredientListEl.addEventListener('dblclick', function(event) {
-  var focusedIngredient = event.target.innerHTML;
-  focusedIngredient = focusedIngredient.substring(focusedIngredient.indexOf('-') + 1).trim();
-  groceryListEl.innerHTML = groceryListEl.innerHTML + '<li>' + focusedIngredient + '</li>';
+  var focusedIngredient = event.target.firstChild.textContent;
+  var li = document.createElement('li');
+  li.textContent = focusedIngredient;
+  groceryListEl.appendChild(li);
 });
 
 groceryListEl.addEventListener('dblclick', function(event) {
     event.target.remove();
     localStorage.removeItem("name")
-  });
+});
 
-function addToList(event) {
-    groceryListEl.innerHTML = groceryListEl.innerHTML + ingredientArray;
+addAllBtn.addEventListener('click', function() {
+  var listItems = ingredientListEl.getElementsByTagName('li');
+  for(var i = 0; i < listItems.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = listItems[i].firstChild.textContent;
+    groceryListEl.appendChild(li);
+  }
+});
+
+deleteBtn.addEventListener('click', function() {
+  groceryListEl.innerHTML = "";
+  localStorage.removeItem("grocery-list");
+});
+
+saveBtn.addEventListener('click', function() {
+  saveGroceryList();
+});
+
+function saveGroceryList() {
+  var list = groceryListEl.getElementsByTagName('li');
+  for(var i = 0; i < list.length; i++) {
+    groceryList.push(list[i].textContent);
+  }
+  localStorage.setItem("grocery-list", JSON.stringify(list));
 }
 
-function saveList() {
-    localStorage.setItem("ingredient", JSON.stringify(groceryListEl.innerHTML));  
-
-}
-
-function deleteList() {
-    groceryListEl.innerHTML= '';
-    localStorage.clear();
-}
+groceryListEl.addEventListener(, function() {
+  saveGroceryList();
+})
 
 function printPageArea() {
     var printSection = document.getElementById('grocery-list');
@@ -215,23 +223,12 @@ function loadList() {
     groceryListEl.innerHTML = JSON.parse(localStorage.getItem("ingredient"));
 }
 
-$(document).ready(function(){
-    $('.modal').modal();
-})
-
-function toggleModal(){
-    var instance= M.Modal.getInstance($('#modal1'))
-    instance.open();
-}
-
-function showModal(message, error) {
+function showModal(message) {
+  customMessageEl.textContent = "";
   customMessageEl.textContent = message;
-  errorMessageEl.innerHTML = error;
   myModal.style.display = "block";
+  prevenDefault();
 }
 
-function closeModal() {
-  myModal.style.display = "none";
-}
 
 loadList();
