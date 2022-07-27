@@ -205,10 +205,6 @@ function saveGroceryList() {
   localStorage.setItem("grocery-list", JSON.stringify(list));
 }
 
-groceryListEl.addEventListener(, function() {
-  saveGroceryList();
-})
-
 function printPageArea() {
     var printSection = document.getElementById('grocery-list');
     var windPrint = window.open('', '', 'width=900,height=650');
